@@ -31,13 +31,13 @@ var players = {
         keyboardAndChoice: {
            KeyQ: 'rock',
            KeyW: 'paper',
-           KeyD: 'scissors'
+           KeyE: 'scissors'
         },
 
         choiceAndImg: {
-            rock: 'images/rock_sm.png',
-            paper: 'images/paper_sm.png',
-            scissors: 'images/scissors_sm.png'
+            rock: 'images/rock.png',
+            paper: 'images/paper.png',
+            scissors: 'images/scissors.png'
         },
 
         result: {
@@ -58,15 +58,15 @@ var players = {
         },
 
         keyboardAndChoice: {
-           KeyP: 'rock',
+           KeyI: 'rock',
            KeyO: 'paper',
-           KeyK: 'scissors'
+           KeyP: 'scissors'
         },
 
         choiceAndImg: {
-            rock: 'images/rock_sm.png',
-            paper: 'images/paper_sm.png',
-            scissors: 'images/scissors_sm.png'
+            rock: 'images/rock.png',
+            paper: 'images/paper.png',
+            scissors: 'images/scissors.png'
         },
 
         result: {
@@ -83,12 +83,15 @@ var players = {
 var player1Choice = null;
 var player2Choice = null;
 
+var player1Deck = [];
+var player2Deck = [];
+
 
 // Shuffle the array of cards
 var generateRandomCards = function(max) {
     let numArray = [];
-    let player1Deck = [];
-    let player2Deck = [];
+    player1Deck = [];
+    player2Deck = [];
 
     for (var i = 0; i < max; i++) {
         let num = Math.floor(Math.random() * Math.floor(max));
@@ -110,12 +113,60 @@ var generateRandomCards = function(max) {
 };
 
 
+// Display this random cards
+var showCards = function() {
+
+        // Set Player 1 Cards
+        let player1Card1 = document.createElement('img');
+        player1Card1.classList.add("img-fluid");
+        player1Card1.setAttribute('src', 'images/rock.png');
+        document.querySelector('.player-1-card-1').appendChild(player1Card1);
+
+        let player1Card2 = document.createElement('img');
+        player1Card2.classList.add("img-fluid");
+        player1Card2.setAttribute('src', 'images/paper.png');
+        document.querySelector('.player-1-card-2').appendChild(player1Card2);
+
+        let player1Card3 = document.createElement('img');
+        player1Card3.classList.add("img-fluid");
+        player1Card3.setAttribute('src', 'images/scissors.png');
+        document.querySelector('.player-1-card-3').appendChild(player1Card3);
+
+
+        // Set Player 2 Cards
+        let player2Card1 = document.createElement('img');
+        player2Card1.classList.add("img-fluid");
+        player2Card1.setAttribute('src', 'images/rock.png');
+        document.querySelector('.player-2-card-1').appendChild(player2Card1);
+
+        let player2Card2 = document.createElement('img');
+        player2Card2.classList.add("img-fluid");
+        player2Card2.setAttribute('src', 'images/paper.png');
+        document.querySelector('.player-2-card-2').appendChild(player2Card2);
+
+        let player2Card3 = document.createElement('img');
+        player2Card3.classList.add("img-fluid");
+        player2Card3.setAttribute('src', 'images/scissors.png');
+        document.querySelector('.player-2-card-3').appendChild(player2Card3);
+};
+
+
+// Display this random cards
+var showRandomCards = function() {
+    generateRandomCards(3);
+
+    let player1Card = document.createElement('img');
+    player1Card.classList.add("img-fluid");
+    player1Card.setAttribute('src', 'images/paper.png');
+    document.querySelector('.player-1-card-1').appendChild(player1Card);
+};
+
+
+
 // Checking which key is pressed
 document.addEventListener('keydown', logKey);
 
 function logKey(event) {
-
-    generateRandomCards(3);
 
     removeCards();
     var x = event.code;
@@ -132,9 +183,7 @@ function logKey(event) {
         player1Choice = null;
         player2Choice = null;
     }
-    return player1Choice;
-
- }
+ };
 
 var checkWin = function () {
     console.log("checking now");
@@ -150,6 +199,7 @@ var checkWin = function () {
 // Display game message based on player's choice
 var gameMsg = function(p1, p2) {
 
+    showCards();
     var state = weapons[p1]['strength with ' + p2];
     console.log("state of game: " + state);
 
@@ -196,6 +246,4 @@ var removeCards = function() {
     for (i=0;i<images.length;i++) {
         images[i].remove()
     }
-    //cardImg.length = 0;
-    //var throwCards = document.querySelector('.player-1-choice').removeChild(cardImg[0]);
 }
