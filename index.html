@@ -3,51 +3,54 @@
 <head>
     <title>ROCK PAPER SCISSOR</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:400,500,700,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class="main-wrapper col-12">
+    <!-- <div class="container col-12"> -->
+        <div class="main-wrapper col-12">
 
-        <div class="col-2 player-1-bar">
-            <div class="player-1-title row">Player 1</div>
-            <div class="player-1-points row">Points: </div>
-            <div class="player-1-cards row">
-                <div class="player-1-card-1 cards"></div>
-                <div class="player-1-card-2 cards"></div>
-                <div class="player-1-card-3 cards"></div>
-            </div>
-        </div>
-
-        <div class="game-board col-8">
-            <div class="instructions-wrapper row">
-                <div class="msg">Choose your cards!</div>
-
-                <div class="game-in-play row">
-                    <div class="player-1-board col-5">
-                        <div class="player-1-choice d-flex align-items-center"></div>
-                        <span class="player-1-choice-display-text">Player 1</span>
-                    </div>
-                    <span class="versus col-2">v.s</span>
-
-                    <div class="player-2-board col-5">
-                        <div class="player-2-choice d-flex align-items-center"></div>
-                        <span class="player-2-choice-display-text">Player 2</span>
-                    </div>
+            <div class="col-2 player-1-bar">
+                <div class="player-1-title row">Player 1</div>
+                <div class="player-1-points row">Points: </div>
+                <div class="player-1-cards row">
+                    <div class="player-1-card-1 cards"></div>
+                    <div class="player-1-card-2 cards"></div>
+                    <div class="player-1-card-3 cards"></div>
                 </div>
+            </div>
 
+            <div class="game-board col-8">
+                <div class="instructions-wrapper row d-flex justify-content-center">
+                    <div class="msg d-flex justify-content-center">Choose your cards!</div>
+
+                    <div class="game-in-play row">
+                        <div class="player-1-board col-5">
+                            <div class="player-1-choice d-flex align-items-center"></div>
+                            <span class="player-1-choice-display-text">Player 1</span>
+                        </div>
+                        <div class="versus col-2 d-flex align-items-center d-flex justify-content-center">v.s</div>
+
+                        <div class="player-2-board col-5">
+                            <div class="player-2-choice d-flex align-items-center"></div>
+                            <span class="player-2-choice-display-text">Player 2</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-2 player-2-bar">
+                <div class="player-2-title row">Player 2</div>
+                <div class="player-2-points row">Points: </div>
+                <div class="player-2-cards row">
+                    <div class="player-2-card-1 cards"></div>
+                    <div class="player-2-card-2 cards"></div>
+                    <div class="player-2-card-3 cards"></div>
+                </div>
             </div>
         </div>
-
-        <div class="col-2 player-2-bar">
-            <div class="player-2-title row">Player 2</div>
-            <div class="player-2-points row">Points: </div>
-            <div class="player-2-cards row">
-                <div class="player-2-card-1 cards"></div>
-                <div class="player-2-card-2 cards"></div>
-                <div class="player-2-card-3 cards"></div>
-            </div>
-        </div>
-    </div>
+    <!-- </div> -->
 <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
