@@ -9,11 +9,28 @@
 }
 
 
+.start {
+	color: #fff;
+	font-size: 1em;
+	background-color: #9B1B30;
+	width: 120px;
+	height: 50px;
+}
+
+
+.start .hidden {
+	display: none;
+}
+
 .game-board {
 	margin: 0;
 	padding: 50px;
 	/*border: 3px solid #0000ff;*/
 	background-color: #F5D6C6;
+}
+
+.game-board .hidden {
+	display: none;
 }
 
 .instructions-wrapper {
@@ -24,7 +41,9 @@
 
 
 .msg {
+	font-weight: 700;
 	width: 100%;
+	text-align: center;
 /*	border: 1px solid #00ff00;*/
 	font-size: 2.5em;
 }
@@ -100,12 +119,24 @@
 	align-items: center;*/
 }
 
+.versus .hidden {
+	display: none;
+}
+
 .player-1-board {
 	/*width: 300px;*/
 }
 
+.player-1-board .hidden {
+	display: none;
+}
+
 .player-2-board {
 	/*width: 300px;*/
+}
+
+.player-2-board .hidden {
+	display: none;
 }
 
 
