@@ -162,20 +162,14 @@
 	box-sizing: content-box;
 }
 
-.player-1-choice-display-text {
+.player-1-label {
 	display: block;
 	text-align: center;
 	font-size: 1.5em;
 }
 
-.player-2-choice-display-text {
+.player-2-label {
 	display: block;
 	text-align: center;
 	font-size: 1.5em;
-}
-
-
-.player-1-card-1 {
-	width: 100px;
-	height: 100px;
 }
