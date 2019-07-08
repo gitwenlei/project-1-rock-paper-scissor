@@ -51,6 +51,12 @@ var players = {
 
     player2: {
 
+        options: {
+            0: 'rock',
+            1: 'paper',
+            2: 'scissors'
+        },
+
         keyboardAndChoice: {
            KeyP: 'rock',
            KeyO: 'paper',
@@ -82,18 +88,25 @@ var player2Choice = null;
 var generateRandomCards = function(max) {
     let numArray = [];
     let player1Deck = [];
+    let player2Deck = [];
 
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < max; i++) {
         let num = Math.floor(Math.random() * Math.floor(max));
         numArray.push(num);
 
-        let card = players['player1']['options'][numArray[i]];
-        player1Deck.push(card);
-
+        let cards1 = players['player1']['options'][numArray[i]];
+        player1Deck.push(cards1);
     }
-    // console.log("array: " + numArray);
-    console.log("deck:" + player1Deck);
-    // return numArray;
+
+    for (var j = max; j > 0; j--) {
+            let num = Math.floor(Math.random() * Math.floor(max));
+            numArray.push(num);
+
+            let cards2 = players['player2']['options'][numArray[j]];
+            player2Deck.push(cards2);
+    }
+    console.log("deck 1:" + player1Deck);
+    console.log("deck 2:" + player2Deck);
 };
 
 
