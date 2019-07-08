@@ -1,18 +1,21 @@
 
 var weapons = {
     rock: {
+        'strength with rock': null, // it's a draw
         'strength with paper': false, // rock lose
-        'strength with scissor': true // rock win
+        'strength with scissors': true // rock win
     },
 
     paper: {
-        'strength with scissor': false,  // paper lose
+        'strength with paper': null, // it's a draw
+        'strength with scissors': false,  // paper lose
         'strength with rock': true // paper win
     },
 
-    scissor: {
-        'strength with rock' : false, // scissor lose
-        'strength with paper': true // scissor win
+    scissors: {
+        'strength with scissors': null, // it's a draw
+        'strength with rock' : false, // scissors lose
+        'strength with paper': true // scissors win
     }
 };
 
@@ -27,7 +30,7 @@ var players = {
         choice: {
             rock: 'rock',
             paper: 'paper',
-            scissor: 'scissor'
+            scissors: 'scissors'
         },
 
         result: {
@@ -48,7 +51,7 @@ var players = {
         choice: {
             rock: 'rock',
             paper: 'paper',
-            scissor: 'scissor'
+            scissors: 'scissors'
         },
 
         result: {
@@ -67,15 +70,16 @@ var players = {
 // console.log(players['player2']['choice']['paper']);
 // console.log(weapons['rock']['strength with ' + players['player2']['choice']['paper']]);
 
+// Check which weapon chosen
 // print if player1 weapon = rock & player2 weapon = paper
-var player1Choice = players['player1']['choice']['rock'];
-var player2Choice = players['player2']['choice']['paper'];
-var state = weapons[player1Choice]['strength with ' + player2Choice];
-// console.log(vvv);
+// var player1Choice = players['player1']['choice']['rock'];
+// var player2Choice = players['player2']['choice']['paper'];
+// var state = weapons[player1Choice]['strength with ' + player2Choice];
 
-var msg = players['player1']['result'][state];
-var displayMsg = "player1 " + msg;
-console.log(displayMsg);
+// Check who won
+// var msg = players['player1']['result'][state];
+// var displayMsg = "player1 " + msg;
+// console.log(displayMsg);
 
 var keyQ = players['player1']['keyDown']['q'];
 var keyW = players['player1']['keyDown']['w'];
@@ -93,6 +97,7 @@ function logKey(event) {
     var x = event.code;
     // console.log(x);
 
+    checkWin(x);
     // Checking which key is pressed
     // if ((x === keyQ) || (x === keyW) || (x === keyD)) {
     //     // console.log("player1 pressed " + x);
@@ -101,37 +106,66 @@ function logKey(event) {
     // } else {
     //     console.log("wrong key pressed!");
     // }
-
-    // checking which key is pressed & display weapon choice
-    switch (x) {
-        // checking player1 choice
-        case keyQ:
-            console.log(players['player1']['choice']['rock']);
-            break;
-        case keyW:
-            console.log(players['player1']['choice']['paper']);
-            break;
-        case keyD:
-            console.log(players['player1']['choice']['scissor']);
-            break;
-        // checking player2 choice
-        case keyP:
-            console.log(players['player2']['choice']['rock']);
-            break;
-        case keyO:
-            console.log(players['player2']['choice']['paper']);
-            break;
-        case keyK:
-            console.log(players['player2']['choice']['scissor']);
-            break;
-        default:
-            console.log("wrong key pressed");
-    }
 };
 
 var checkWin = function (keyPressed) {
-    var player1Choice = [players]['player1']['choice'];
-    var player2Choice = [players]['player1']['choice'];
+
+    var player1Weapon;
+    var player2Weapon;
+
+    switch (keyPressed) {
+        // checking player1 choice
+        case keyQ:
+            // console.log(players['player1']['choice']['rock']);
+            player1Weapon = players['player1']['choice']['rock'];
+            console.log(player1Weapon);
+            break;
+        case keyW:
+            // console.log(players['player1']['choice']['paper']);
+            player1Weapon = players['player1']['choice']['paper'];
+            console.log(player1Weapon);
+            break;
+        case keyD:
+            // console.log(players['player1']['choice']['scissors']);
+            player1Weapon = players['player1']['choice']['scissors'];
+            console.log(player1Weapon);
+            break;
+
+        // checking player2 choice
+        case keyP:
+            // console.log(players['player2']['choice']['rock']);
+            player2Weapon = players['player1']['choice']['rock'];
+            console.log(player2Weapon);
+            break;
+        case keyO:
+            // console.log(players['player2']['choice']['paper']);
+            player2Weapon = players['player1']['choice']['paper'];
+            console.log(player2Weapon);
+            break;
+        case keyK:
+            // console.log(players['player2']['choice']['scissors']);
+            player2Weapon = players['player1']['choice']['scissors'];
+            console.log(player2Weapon);
+            break;
+        default:
+            console.log("wrong key pressed");
+    };
+
+    var temp = 'strength with ' + player2Weapon;
+    console.log('testing: ' + temp);
+
+    // console.log("weapon", weapons[weapon]);
+
+
+    // Check which weapon chosen for each player
+    // var state = weapons[player1Weapon]['strength with ' + player2Weapon];
+    // console.log(state);
+
+    // // // Check which player won
+    // var msg = players['player1']['result'][state];
+    // var displayMsg = "player1 " + msg;
+    // console.log(displayMsg);
+
 };
 
 
