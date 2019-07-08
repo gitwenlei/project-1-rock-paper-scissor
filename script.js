@@ -88,6 +88,7 @@ var checkWin = function () {
     var player2Weapon = (players['player2']['keyboardAndChoice'][player2Choice]);
 
     // Display game msg base on player's choice
+    displayChosenCards(player1Weapon, player2Weapon);
     gameMsg(player1Weapon, player2Weapon);
 };
 
@@ -114,4 +115,9 @@ var gameMsg = function(p1, p2) {
 
 var displayStatus = function(msg) {
     document.querySelector('.msg').innerHTML = msg;
+}
+
+var displayChosenCards = function(p1Weapon, p2Weapon) {
+    document.querySelector('.player-1-choice').innerHTML = p1Weapon;
+    document.querySelector('.player-2-choice').innerHTML = p2Weapon;
 }
