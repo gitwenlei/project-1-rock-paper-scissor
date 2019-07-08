@@ -86,6 +86,24 @@ var player2Choice = null;
 var player1Deck = [];
 var player2Deck = [];
 
+window.onload = function() {
+    initScreen();
+};
+
+var initScreen = function() {
+    document.querySelector('.msg').innerText = "Rock, Paper, Scissors";
+    document.querySelector('.player-1-board').classList.add('hidden');
+    document.querySelector('.player-2-board').classList.add('hidden');
+    document.querySelector('.versus').classList.add('hidden');
+    document.querySelector('#start').classList.remove('hidden');
+};
+
+var showBoard = function() {
+    document.querySelector('.player-1-board').classList.remove('hidden');
+    document.querySelector('.player-2-board').classList.remove('hidden');
+    document.querySelector('#start').classList.add('hidden');
+};
+
 
 // Shuffle the array of cards
 var generateRandomCards = function(max) {
