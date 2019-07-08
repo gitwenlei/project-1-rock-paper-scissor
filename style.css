@@ -76,7 +76,7 @@
 .player-1-cards {
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
+	padding: 20px 20px 0 20px;
 }
 
 .player-2-bar {
@@ -100,7 +100,7 @@
 .player-2-cards {
 	display: flex;
 	flex-direction: row;
-	padding: 20px;
+	padding: 20px 20px 0 20px;
 }
 
 .cards {
