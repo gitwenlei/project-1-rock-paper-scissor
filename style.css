@@ -63,23 +63,28 @@
 	padding: 50px;
 }
 
-.player-1-board {
+.versus {
 	display: flex;
-	flex-direction: column;
+	align-items: center;
+}
+
+.player-1-board {
+	/*display: flex;*/
+	/*flex-direction: column;*/
 	width: 160px;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 
 .player-2-board {
 	width: 160px;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 
 
 .game-in-play {
 /*	display: flex;
 	justify-content: center;*/
-	border: 1px solid #00ff00;
+	/*border: 1px solid #00ff00;*/
 	margin: 20px 0 20px 0;
 }
 
@@ -89,7 +94,7 @@
 	margin: 0;
 	padding: 0;
 	border: 1px solid #000;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-sizing: content-box;
 }
 
@@ -99,7 +104,7 @@
 	margin: 0;
 	padding: 0;
 	border: 1px solid #000;
-	border-radius: 5px;
+	border-radius: 10px;
 	box-sizing: content-box;
 }
 
