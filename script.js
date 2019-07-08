@@ -108,5 +108,10 @@ var gameMsg = function(p1, p2) {
         displayMsg = "it's a draw";
     }
     console.log(displayMsg);
-    return displayMsg;
+    // return displayMsg;
+    displayStatus(displayMsg);
 };
+
+var displayStatus = function(msg) {
+    document.querySelector('.msg').innerHTML = msg;
+}
