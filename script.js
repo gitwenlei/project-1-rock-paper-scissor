@@ -108,7 +108,6 @@ var showBoard = function() {
     document.querySelector('.player-2-board').classList.remove('hidden');
     document.querySelector('.versus').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
-
 };
 
 
