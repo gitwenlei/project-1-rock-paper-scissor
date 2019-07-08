@@ -28,6 +28,12 @@ var players = {
            KeyD: 'scissors'
         },
 
+        choiceAndImg: {
+            rock: 'images/rock_sm.png',
+            paper: 'images/paper_sm.png',
+            scissors: 'images/scissors_sm.png'
+        },
+
         result: {
             true: 'won',
             false: 'lost',
@@ -43,6 +49,12 @@ var players = {
            KeyP: 'rock',
            KeyO: 'paper',
            KeyK: 'scissors'
+        },
+
+        choiceAndImg: {
+            rock: 'images/rock_sm.png',
+            paper: 'images/paper_sm.png',
+            scissors: 'images/scissors_sm.png'
         },
 
         result: {
@@ -118,6 +130,17 @@ var displayStatus = function(msg) {
 }
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
-    document.querySelector('.player-1-choice').innerHTML = p1Weapon;
-    document.querySelector('.player-2-choice').innerHTML = p2Weapon;
+    var player1Symbol = players['player1']['choiceAndImg'][p1Weapon];
+    var player2Symbol = players['player2']['choiceAndImg'][p2Weapon];
+
+    console.log(player1Symbol);
+    console.log(player2Symbol);
+
+    var player1Card = document.createElement('img');
+    player1Card.setAttribute('src', player1Symbol);
+    document.querySelector('.player-1-choice').appendChild(player1Card);
+
+    var player2Card = document.createElement('img');
+    player2Card.setAttribute('src', player2Symbol);
+    document.querySelector('.player-2-choice').appendChild(player2Card);
 }
