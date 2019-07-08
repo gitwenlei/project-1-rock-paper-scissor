@@ -22,6 +22,12 @@ var weapons = {
 var players = {
     player1: {
 
+        options: {
+            0: 'rock',
+            1: 'paper',
+            2: 'scissors'
+        },
+
         keyboardAndChoice: {
            KeyQ: 'rock',
            KeyW: 'paper',
@@ -72,10 +78,32 @@ var player1Choice = null;
 var player2Choice = null;
 
 
+// Shuffle the array of cards
+var generateRandomCards = function(max) {
+    let numArray = [];
+    let player1Deck = [];
+
+    for (var i = 0; i < 3; i++) {
+        let num = Math.floor(Math.random() * Math.floor(max));
+        numArray.push(num);
+
+        let card = players['player1']['options'][numArray[i]];
+        player1Deck.push(card);
+
+    }
+    // console.log("array: " + numArray);
+    console.log("deck:" + player1Deck);
+    // return numArray;
+};
+
+
 // Checking which key is pressed
 document.addEventListener('keydown', logKey);
 
 function logKey(event) {
+
+    generateRandomCards(3);
+
     removeCards();
     var x = event.code;
     // console.log(x);
