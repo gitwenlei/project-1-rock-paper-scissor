@@ -106,11 +106,11 @@ function logKey(event) {
 
     if (player1Choice === null){
         player1Choice = x;
-        console.log("player one choice: ", player1Choice);
+        // console.log("player one choice: ", player1Choice);
     }
     else {
         player2Choice = x;
-        console.log("player two choice: ", player2Choice);
+        // console.log("player two choice: ", player2Choice);
         checkWin();
         player1Choice = null;
         player2Choice = null;
@@ -153,7 +153,8 @@ var checkWin = function () {
             // console.log(player1Weapon);
             break;
     }
-    switch (player2Choice){
+
+    switch (player2Choice) {
         // checking player2 choice
         case keyP:
             // console.log(players['player2']['choice']['rock']);
@@ -174,7 +175,16 @@ var checkWin = function () {
 
 
     // Check which weapon chosen for each player
-    var state = weapons[player1Weapon]['strength with ' + player2Weapon];
+    console.log("player 1 weapon: " + player1Weapon);
+    console.log("player 2 weapon: " + player2Weapon);
+
+    gameMsg(player1Weapon, player2Weapon);
+
+};
+
+var gameMsg = function(p1, p2) {
+
+    var state = weapons[p1]['strength with ' + p2];
     console.log("state of game: " + state);
 
     // Check which player won
@@ -191,8 +201,7 @@ var checkWin = function () {
         console.log(displayMsg);
     }
 
-};
-
+}
 
 // var state = weapons[players['player1']['choice']['rock']]['strength with ' + players['player2']['choice']['paper']];
 // console.log(state);
