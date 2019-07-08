@@ -91,16 +91,33 @@ document.addEventListener('keydown', logKey);
 
 function logKey(event) {
     var x = event.code;
-    console.log(x);
+    // console.log(x);
 
-    if ((x === keyQ) || (x === keyW) || (x === keyD)) {
-    console.log("player1 pressed " + x);
-    } else if ((x === keyP) || (x === keyO) || (x === keyK)) {
-        console.log("player2 pressed " + x);
-    } else {
-        console.log("wrong key pressed!");
+    // Checking which key is pressed
+    // if ((x === keyQ) || (x === keyW) || (x === keyD)) {
+    //     // console.log("player1 pressed " + x);
+    // } else if ((x === keyP) || (x === keyO) || (x === keyK)) {
+    //     // console.log("player2 pressed " + x);
+    // } else {
+    //     console.log("wrong key pressed!");
+    // }
+
+    // checking which key is pressed & display weapon choice
+    switch (x) {
+        case keyQ:
+            console.log(players['player1']['choice']['rock']);
+            break;
+        case keyW:
+            console.log(players['player1']['choice']['paper']);
+            break;
+        case keyD:
+            console.log(players['player1']['choice']['scissor']);
+            break;
+        default:
+            console.log("wrong key pressed");
     }
 };
+
 
 
 // var state = weapons[players['player1']['choice']['rock']]['strength with ' + players['player2']['choice']['paper']];
