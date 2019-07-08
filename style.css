@@ -55,7 +55,6 @@
 	padding: 20px;
 }
 
-
 .player-2-bar {
 	display: flex;
 	flex-direction: column;
@@ -93,15 +92,15 @@
 }
 
 .player-1-board {
-	/*display: flex;*/
-	/*flex-direction: column;*/
 	width: 160px;
-	/*border: 1px solid red;*/
 }
 
 .player-2-board {
 	width: 160px;
-	/*border: 1px solid red;*/
+}
+
+img {
+	width: 100%;
 }
 
 .player-1-choice {
