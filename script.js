@@ -103,9 +103,7 @@ document.addEventListener('keydown', logKey);
 function logKey(event) {
     var x = event.code;
     // console.log(x);
-    // if ((player1Choice !== null) && (player2Choice !== null)) {
-    //     checkWin(x);
-    // }
+
     if (player1Choice === null){
         player1Choice = x;
         console.log("player one choice: ", player1Choice);
@@ -130,7 +128,7 @@ function logKey(event) {
 //};
 
 var checkWin = function () {
-    console.log("checking");
+    console.log("checking now");
 
     var player1Weapon;
     var player2Weapon;
@@ -181,8 +179,18 @@ var checkWin = function () {
 
     // Check which player won
     var msg = players['player1']['result'][state];
-    var displayMsg = "player1 " + msg;
-    console.log(displayMsg);
+
+    if (msg === 'won') {
+        var displayMsg = "player 1 " + msg; // this means player 1 won
+         console.log(displayMsg);
+    } else if (msg === 'lost') { // this means player 1 lost. therefore player 2 won
+        displayMsg = "player 2 won";
+        console.log(displayMsg);
+    } else {
+        displayMsg = "it's a draw";
+        console.log(displayMsg);
+    }
+
 
 };
 
