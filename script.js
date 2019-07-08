@@ -81,6 +81,10 @@ var keyQ = players['player1']['keyDown']['q'];
 var keyW = players['player1']['keyDown']['w'];
 var keyD = players['player1']['keyDown']['d'];
 
+var keyP = players['player2']['keyDown']['p'];
+var keyO = players['player2']['keyDown']['o'];
+var keyK = players['player2']['keyDown']['k'];
+
 
 // Checking which key is pressed
 document.addEventListener('keydown', logKey);
@@ -90,7 +94,11 @@ function logKey(event) {
     console.log(x);
 
     if ((x === keyQ) || (x === keyW) || (x === keyD)) {
-    console.log("player1 pressed");
+    console.log("player1 pressed " + x);
+    } else if ((x === keyP) || (x === keyO) || (x === keyK)) {
+        console.log("player2 pressed " + x);
+    } else {
+        console.log("wrong key pressed!");
     }
 };
 
