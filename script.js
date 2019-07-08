@@ -178,8 +178,10 @@ var showCards = function() {
 
         // check for clicks
         var cardsList = document.querySelectorAll('.cards');
+        let x = cardsList.length;
+        console.log(x/2);
 
-        for (var i = 0; i < cardsList.length; i++) {
+        for (var i = 0; i < x/2 ; i++) {
             cardsList[i].addEventListener('click', function() {
                 // console.log(this);
                 // console.log(this.id);
@@ -187,6 +189,18 @@ var showCards = function() {
                 let url = this.childNodes[0].src;
                 console.log(url);
                 displayChosenCard1(url);
+            });
+
+        }
+
+        for (var i = 3; i < x ; i++) {
+            cardsList[i].addEventListener('click', function() {
+                // console.log(this);
+                // console.log(this.id);
+                // console.log(cardsList[0].childNodes[0].src);
+                let url = this.childNodes[0].src;
+                console.log(url);
+                displayChosenCard2(url);
             });
 
         }
@@ -281,13 +295,13 @@ var displayChosenCard1 = function(p1Weapon) {
 };
 
 var displayChosenCard2 = function(p2Weapon) {
-    var player2Symbol = players['player2']['choiceAndImg'][p2Weapon];
+    // var player2Symbol = players['player2']['choiceAndImg'][p2Weapon];
 
-    console.log(player2Symbol);
+    // console.log(player2Symbol);
 
     var player2Card = document.createElement('img');
     player2Card.classList.add("img-fluid");
-    player2Card.setAttribute('src', player2Symbol);
+    player2Card.setAttribute('src', p2Weapon);
     document.querySelector('.player-2-choice').appendChild(player2Card);
 };
 
