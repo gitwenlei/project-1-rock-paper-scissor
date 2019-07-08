@@ -104,6 +104,7 @@ function logKey(event) {
 
     // checking which key is pressed & display weapon choice
     switch (x) {
+        // checking player1 choice
         case keyQ:
             console.log(players['player1']['choice']['rock']);
             break;
@@ -113,11 +114,25 @@ function logKey(event) {
         case keyD:
             console.log(players['player1']['choice']['scissor']);
             break;
+        // checking player2 choice
+        case keyP:
+            console.log(players['player2']['choice']['rock']);
+            break;
+        case keyO:
+            console.log(players['player2']['choice']['paper']);
+            break;
+        case keyK:
+            console.log(players['player2']['choice']['scissor']);
+            break;
         default:
             console.log("wrong key pressed");
     }
 };
 
+var checkWin = function (keyPressed) {
+    var player1Choice = [players]['player1']['choice'];
+    var player2Choice = [players]['player1']['choice'];
+};
 
 
 // var state = weapons[players['player1']['choice']['rock']]['strength with ' + players['player2']['choice']['paper']];
