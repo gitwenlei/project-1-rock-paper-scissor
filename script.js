@@ -76,6 +76,7 @@ var player2Choice = null;
 document.addEventListener('keydown', logKey);
 
 function logKey(event) {
+    removeCards();
     var x = event.code;
     // console.log(x);
 
@@ -91,6 +92,7 @@ function logKey(event) {
         player2Choice = null;
     }
     return player1Choice;
+
  }
 
 var checkWin = function () {
@@ -137,10 +139,22 @@ var displayChosenCards = function(p1Weapon, p2Weapon) {
     console.log(player2Symbol);
 
     var player1Card = document.createElement('img');
+    player1Card.classList.add("img-fluid");
     player1Card.setAttribute('src', player1Symbol);
     document.querySelector('.player-1-choice').appendChild(player1Card);
 
     var player2Card = document.createElement('img');
+    player2Card.classList.add("img-fluid");
     player2Card.setAttribute('src', player2Symbol);
     document.querySelector('.player-2-choice').appendChild(player2Card);
+}
+
+var removeCards = function() {
+    var images = document.querySelectorAll("img");
+    console.log("images length: ", images.length)
+    for (i=0;i<images.length;i++) {
+        images[i].remove()
+    }
+    //cardImg.length = 0;
+    //var throwCards = document.querySelector('.player-1-choice').removeChild(cardImg[0]);
 }
