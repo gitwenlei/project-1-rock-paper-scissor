@@ -191,7 +191,6 @@ var checkWin = function () {
         console.log(displayMsg);
     }
 
-
 };
 
 
