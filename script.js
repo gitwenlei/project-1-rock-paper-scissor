@@ -29,9 +29,9 @@ var players = {
         },
 
         keyboardAndChoice: {
-           KeyQ: 'rock',
-           KeyW: 'paper',
-           KeyE: 'scissors'
+           Digit1: 'rock',
+           Digit2: 'paper',
+           Digit3: 'scissors'
         },
 
         choiceAndImg: {
@@ -58,9 +58,9 @@ var players = {
         },
 
         keyboardAndChoice: {
-           KeyI: 'rock',
-           KeyO: 'paper',
-           KeyP: 'scissors'
+           Digit8: 'rock',
+           Digit9: 'paper',
+           Digit0: 'scissors'
         },
 
         choiceAndImg: {
@@ -108,6 +108,8 @@ var showBoard = function() {
     document.querySelector('.player-2-board').classList.remove('hidden');
     document.querySelector('.versus').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
+
+    showCards();
 };
 
 
@@ -223,7 +225,6 @@ var checkWin = function () {
 // Display game message based on player's choice
 var gameMsg = function(p1, p2) {
 
-    showCards();
     var state = weapons[p1]['strength with ' + p2];
     console.log("state of game: " + state);
 
