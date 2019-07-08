@@ -95,13 +95,20 @@ var initScreen = function() {
     document.querySelector('.player-1-board').classList.add('hidden');
     document.querySelector('.player-2-board').classList.add('hidden');
     document.querySelector('.versus').classList.add('hidden');
-    document.querySelector('#start').classList.remove('hidden');
+    document.querySelector('.start').classList.remove('hidden');
 };
 
+document.querySelector(".start").addEventListener("click", function(){
+    showBoard();
+});
+
 var showBoard = function() {
+    document.querySelector('.start').classList.add('hidden');
     document.querySelector('.player-1-board').classList.remove('hidden');
     document.querySelector('.player-2-board').classList.remove('hidden');
-    document.querySelector('#start').classList.add('hidden');
+    document.querySelector('.versus').classList.remove('hidden');
+    document.querySelector('.versus').innerText = "v.s";
+
 };
 
 
