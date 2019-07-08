@@ -92,12 +92,25 @@ var keyK = players['player2']['keyDown']['k'];
 
 // Checking which key is pressed
 document.addEventListener('keydown', logKey);
-
+var player1Choice = null;
+var player2Choice = null;
 function logKey(event) {
     var x = event.code;
     // console.log(x);
+    // if ((player1Choice !== null) && (player2Choice !== null)) {
+    //     checkWin(x);
+    // }
+    if (player1Choice === null){
+        player1Choice = x;
+        console.log(player1Choice);
+    }
+    else {
+        player2Choice = x;
+        console.log(player2Choice);
+        checkWin();
+    }
+ }
 
-    checkWin(x);
     // Checking which key is pressed
     // if ((x === keyQ) || (x === keyW) || (x === keyD)) {
     //     // console.log("player1 pressed " + x);
@@ -106,14 +119,15 @@ function logKey(event) {
     // } else {
     //     console.log("wrong key pressed!");
     // }
-};
+//};
 
-var checkWin = function (keyPressed) {
-
+var checkWin = function () {
+    console.log("checking");
     var player1Weapon;
     var player2Weapon;
 
-    switch (keyPressed) {
+
+    switch (player1Choice) {
         // checking player1 choice
         case keyQ:
             // console.log(players['player1']['choice']['rock']);
@@ -130,7 +144,8 @@ var checkWin = function (keyPressed) {
             player1Weapon = players['player1']['choice']['scissors'];
             console.log(player1Weapon);
             break;
-
+    }
+    switch (player2Choice){
         // checking player2 choice
         case keyP:
             // console.log(players['player2']['choice']['rock']);
@@ -147,8 +162,6 @@ var checkWin = function (keyPressed) {
             player2Weapon = players['player1']['choice']['scissors'];
             console.log(player2Weapon);
             break;
-        default:
-            console.log("wrong key pressed");
     };
 
     var temp = 'strength with ' + player2Weapon;
@@ -158,13 +171,13 @@ var checkWin = function (keyPressed) {
 
 
     // Check which weapon chosen for each player
-    // var state = weapons[player1Weapon]['strength with ' + player2Weapon];
-    // console.log(state);
+    var state = weapons[player1Weapon]['strength with ' + player2Weapon];
+    console.log(state);
 
     // // // Check which player won
-    // var msg = players['player1']['result'][state];
-    // var displayMsg = "player1 " + msg;
-    // console.log(displayMsg);
+    var msg = players['player1']['result'][state];
+    var displayMsg = "player1 " + msg;
+    console.log(displayMsg);
 
 };
 
