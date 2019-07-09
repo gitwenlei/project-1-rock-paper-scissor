@@ -261,13 +261,13 @@ var showCards = function() {
                         // player1Choice = name1;
                         checkWinClick(player1Choice, player2Choice);
 
-                        var threeSeconds = setTimeout(function() {
+                        var onePtFiveSeconds = setTimeout(function() {
                             console.log("time out");
                             // removeCards();
                             removeCardsClick();
                             removeThumbNails();
                             hideStatus();
-                        }, 1000);
+                        }, 1500);
                     }
                     // else {
 
@@ -365,8 +365,10 @@ var gameMsg = function(p1, p2) {
 // };
 
 var displayStatus = function(msg) {
-    document.querySelector('.game-status').classList.remove('hidden');
-    document.querySelector('.game-status').innerHTML = msg;
+    var thirdSecond = setTimeout(function() {
+        document.querySelector('.game-status').classList.remove('hidden');
+        document.querySelector('.game-status').innerHTML = msg;
+    }, 300);
 };
 
 var hideStatus = function() {
