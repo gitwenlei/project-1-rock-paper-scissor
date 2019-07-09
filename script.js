@@ -213,7 +213,7 @@ var showCards = function() {
         // check for clicks
         var cardsList = document.querySelectorAll('.cards');
         let x = cardsList.length;
-        console.log(x/2);
+        // console.log(x/2);
 
 
         // if (!p1Clicked && !p2Clicked) {
@@ -225,15 +225,19 @@ var showCards = function() {
                 // console.log(cardsList[0].childNodes[0].src);
 
                 // if (player1Clicked === false){
-                p1Clicked = true;
+                if (!p1Clicked) {
+                    p1Clicked = true;
+                    this.remove();
 
-                name1 = event.target.id;
-                event1 = event.target;
-                player1Choice = name1;
+                    name1 = event.target.id;
+                    event1 = event.target;
+                    player1Choice = name1;
 
-                let url = this.childNodes[0].src;
-                // console.log(url);
-                displayChosenCard1(url);
+                    let url = this.childNodes[0].src;
+                    // console.log(url);
+                    displayChosenCard1(url);
+                }
+
 
             });
 
@@ -241,40 +245,42 @@ var showCards = function() {
 
             for (var i = 3; i < x ; i++) {
                 cardsList[i].addEventListener('click', function() {
-                    // console.log(this);
-                    // console.log(this.id);
-                    // console.log(cardsList[0].childNodes[0].src);
-                    p2Clicked = true;
+                    //check if p1clicked
 
-                    name2 = event.target.id;
-                    event2 = event.target;
-                    player2Choice = name2;
+                    if (p1Clicked) {
+                        if (!p2Clicked) {
+                            p2Clicked = true;
+                            this.remove();
 
-                    let url = this.childNodes[0].src;
-                    // console.log(url);
-                    displayChosenCard2(url);
-                    console.log("clicked: " + name1 +  ", " + name2);
+                            name2 = event.target.id;
+                            event2 = event.target;
+                            player2Choice = name2;
 
-                    // checkWinClick(player1Choice, player2Choice);
+                            let url = this.childNodes[0].src;
+                            // console.log(url);
+                            displayChosenCard2(url);
+                            console.log("clicked: " + name1 +  ", " + name2);
 
-                    if (p1Clicked && p2Clicked) {
-                        // player1Choice = name1;
-                        checkWinClick(player1Choice, player2Choice);
+                            // checkWinClick(player1Choice, player2Choice);
 
-                        var onePtFiveSeconds = setTimeout(function() {
-                            console.log("time out");
-                            // removeCards();
-                            removeCardsClick();
-                            removeThumbNails();
-                            hideStatus();
-                        }, 1500);
+                            if (p1Clicked && p2Clicked) {
+                                // player1Choice = name1;
+                                checkWinClick(player1Choice, player2Choice);
+
+                                var onePtFiveSeconds = setTimeout(function() {
+                                    // console.log("time out");
+                                    // removeCards();
+                                    removeCardsClick();
+                                    removeThumbNails();
+                                    hideStatus();
+                                    p1Clicked = false;
+                                    p2Clicked = false;
+                                }, 1500);
+                            }
+                        }
+                    } else {
+                        alert("Please Wait for player 1");
                     }
-                    // else {
-
-                    //     player1Choice = null;
-                    //     player2Choice = null;
-
-                    // }
                 });
             }
             // console.log("clicked: " + name1 +  ", " + name2);
@@ -291,7 +297,7 @@ document.addEventListener('keydown', logKey);
 
 function logKey(event) {
 
-    console.log(event);
+    // console.log(event);
 
     removeCards();
     var x = event.code;
@@ -304,11 +310,11 @@ function logKey(event) {
         // Run checkWin
         if (player1Choice === null){
         player1Choice = x;
-        console.log("player one choice: ", player1Choice);
+        // console.log("player one choice: ", player1Choice);
     }
         else {
             player2Choice = x;
-            console.log("player two choice: ", player2Choice);
+            // console.log("player two choice: ", player2Choice);
             checkWin(player1Choice, player2Choice);
             player1Choice = null;
             player2Choice = null;
@@ -317,7 +323,7 @@ function logKey(event) {
  };
 
 var checkWinClick = function (p1Choice, p2Choice) {
-    console.log("checking now");
+    // console.log("checking now");
 
     var player1Weapon = (players['player1']['keyboardAndChoice'][p1Choice]);
     var player2Weapon = (players['player2']['keyboardAndChoice'][p2Choice]);
@@ -329,7 +335,7 @@ var checkWinClick = function (p1Choice, p2Choice) {
 
 
 var checkWin = function (p1Choice, p2Choice) {
-    console.log("checking now");
+    // console.log("checking now");
 
     var player1Weapon = (players['player1']['keyboardAndChoice'][p1Choice]);
     var player2Weapon = (players['player2']['keyboardAndChoice'][p2Choice]);
@@ -343,7 +349,7 @@ var checkWin = function (p1Choice, p2Choice) {
 var gameMsg = function(p1, p2) {
 
     var state = weapons[p1]['strength with ' + p2];
-    console.log("state of game: " + state);
+    // console.log("state of game: " + state);
 
     // Check which player won
     var msg = players['player1']['result'][state];
@@ -355,7 +361,7 @@ var gameMsg = function(p1, p2) {
     } else {
         displayMsg = "it's a draw";
     }
-    console.log(displayMsg);
+    // console.log(displayMsg);
     // return displayMsg;
     displayStatus(displayMsg);
 };
@@ -380,8 +386,8 @@ var displayChosenCards = function(p1Weapon, p2Weapon) {
     var player1Symbol = players['player1']['choiceAndImg'][p1Weapon];
     var player2Symbol = players['player2']['choiceAndImg'][p2Weapon];
 
-    console.log(player1Symbol);
-    console.log(player2Symbol);
+    // console.log(player1Symbol);
+    // console.log(player2Symbol);
 
     var player1Card = document.createElement('img');
     player1Card.classList.add("img-fluid");
@@ -423,7 +429,7 @@ var displayChosenCard2 = function(p2Weapon) {
 
 var removeCards = function() {
     var images = document.querySelectorAll("img");
-    console.log("images length: ", images.length)
+    // console.log("images length: ", images.length)
     for (i=0;i<images.length;i++) {
         images[i].remove()
     }
