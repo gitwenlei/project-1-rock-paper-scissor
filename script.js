@@ -115,6 +115,7 @@ var initScreen = function() {
     document.querySelector('.novice').classList.remove('hidden');
     document.querySelector('.expert').classList.remove('hidden');
     document.querySelector('.master').classList.remove('hidden');
+    document.querySelector('.sub-instruct').classList.add('hidden');
 
     let cards =  document.querySelectorAll('.cards');
     for (var i = 0; i < cards.length; i++) {
@@ -133,6 +134,7 @@ var showNoviceLevel = function() {
     document.querySelector('.versus').classList.remove('hidden');
     document.querySelector('.player-1-cards').classList.remove('hidden');
     document.querySelector('.player-2-cards').classList.remove('hidden');
+    document.querySelector('.sub-instruct').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
 
     let cards =  document.querySelectorAll('.cards');
@@ -142,6 +144,14 @@ var showNoviceLevel = function() {
 
     showCards();
     generateRandomCards(3);
+};
+
+
+var endNoviceLevel = function() {
+    document.querySelector('.player-1-board').classList.add('hidden');
+    document.querySelector('.player-2-board').classList.add('hidden');
+    document.querySelector('.versus').classList.add('hidden');
+    document.querySelector('.sub-instruct').classList.add('hidden');
 };
 
 
@@ -216,18 +226,10 @@ var showCards = function() {
         // check for clicks
         var cardsList = document.querySelectorAll('.cards');
         let x = cardsList.length;
-        // console.log(x/2);
 
 
-        // if (!p1Clicked && !p2Clicked) {
-
-            for (var i = 0; i < x/2 ; i++) {
+        for (var i = 0; i < x/2 ; i++) {
             cardsList[i].addEventListener('click', function() {
-                // console.log(this);
-                // console.log(this.id);
-                // console.log(cardsList[0].childNodes[0].src);
-
-                // if (player1Clicked === false){
                 if (!p1Clicked) {
                     p1Clicked = true;
                     this.remove();
@@ -240,52 +242,52 @@ var showCards = function() {
                     // console.log(url);
                     displayChosenCard1(url);
                 }
-
-
             });
+         }
 
-        }
+        let cardPlayed = 0;
+        for (var i = 3; i < x ; i++) {
+            cardsList[i].addEventListener('click', function() {
 
-            for (var i = 3; i < x ; i++) {
-                cardsList[i].addEventListener('click', function() {
-                    //check if p1clicked
+                if (p1Clicked) {
+                    if (!p2Clicked) {
+                        p2Clicked = true;
+                        this.remove();
 
-                    if (p1Clicked) {
-                        if (!p2Clicked) {
-                            p2Clicked = true;
-                            this.remove();
+                        cardPlayed++;
+                        console.log('card played:' + cardPlayed);
 
-                            name2 = event.target.id;
-                            event2 = event.target;
-                            player2Choice = name2;
+                        name2 = event.target.id;
+                        event2 = event.target;
+                        player2Choice = name2;
 
-                            let url = this.childNodes[0].src;
-                            // console.log(url);
-                            displayChosenCard2(url);
-                            console.log("clicked: " + name1 +  ", " + name2);
+                        let url = this.childNodes[0].src;
+                        // console.log(url);
+                        displayChosenCard2(url);
+                        // console.log("clicked: " + name1 +  ", " + name2);
 
-                            // checkWinClick(player1Choice, player2Choice);
+                        // checkWinClick(player1Choice, player2Choice);
 
-                            if (p1Clicked && p2Clicked) {
-                                // player1Choice = name1;
-                                checkWinClick(player1Choice, player2Choice);
+                        if (p1Clicked && p2Clicked) {
+                            // player1Choice = name1;
+                            checkWinClick(player1Choice, player2Choice);
 
-                                var onePtFiveSeconds = setTimeout(function() {
-                                    // console.log("time out");
-                                    // removeCards();
-                                    removeCardsClick();
-                                    removeThumbNails();
-                                    hideStatus();
-                                    p1Clicked = false;
-                                    p2Clicked = false;
-                                }, 1500);
-                            }
+                            var onePtFiveSeconds = setTimeout(function() {
+                                // console.log("time out");
+                                // removeCards();
+                                removeCardsClick();
+                                removeThumbNails();
+                                hideStatus();
+                                p1Clicked = false;
+                                p2Clicked = false;
+                            }, 1500);
                         }
-                    } else {
-                        alert("Please Wait for Player 1");
                     }
-                });
-            }
+                } else {
+                    alert("Please Wait for Player 1");
+                }
+            });
+        }
             // console.log("clicked: " + name1 +  ", " + name2);
             // checkWin(name1, name2);
 
