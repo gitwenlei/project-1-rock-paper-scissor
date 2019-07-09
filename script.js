@@ -101,7 +101,7 @@ window.onload = function() {
     initScreen();
 
     document.querySelector(".novice").addEventListener("click", function(){
-    showBoard();
+    showNoviceLevel();
     });
 };
 
@@ -113,6 +113,8 @@ var initScreen = function() {
     document.querySelector('.player-1-cards').classList.add('hidden');
     document.querySelector('.player-2-cards').classList.add('hidden');
     document.querySelector('.novice').classList.remove('hidden');
+    document.querySelector('.expert').classList.remove('hidden');
+    document.querySelector('.master').classList.remove('hidden');
 
     let cards =  document.querySelectorAll('.cards');
     for (var i = 0; i < cards.length; i++) {
@@ -122,8 +124,10 @@ var initScreen = function() {
 
 
 
-var showBoard = function() {
+var showNoviceLevel = function() {
     document.querySelector('.novice').classList.add('hidden');
+    document.querySelector('.expert').classList.add('hidden');
+    document.querySelector('.master').classList.add('hidden');
     document.querySelector('.player-1-board').classList.remove('hidden');
     document.querySelector('.player-2-board').classList.remove('hidden');
     document.querySelector('.versus').classList.remove('hidden');
