@@ -225,16 +225,21 @@ function logKey(event) {
     var x = event.code;
     // console.log(x);
 
-    if (player1Choice === null){
+    // Check for invalid key pressed
+    if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
+
+        // Run checkWin
+        if (player1Choice === null){
         player1Choice = x;
         console.log("player one choice: ", player1Choice);
     }
-    else {
-        player2Choice = x;
-        console.log("player two choice: ", player2Choice);
-        checkWin();
-        player1Choice = null;
-        player2Choice = null;
+        else {
+            player2Choice = x;
+            console.log("player two choice: ", player2Choice);
+            checkWin();
+            player1Choice = null;
+            player2Choice = null;
+        }
     }
  };
 
