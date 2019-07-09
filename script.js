@@ -104,12 +104,16 @@ var finalMsg = "";
 window.onload = function() {
     initScreen();
 
+    document.querySelector(".return-to-main-btn").addEventListener("click", function() {
+        location.reload(true);
+    });
+
     document.querySelector(".novice").addEventListener("click", function(){
         showNoviceLevel();
     });
 
-    document.querySelector(".return-to-main-btn").addEventListener("click", function() {
-        location.reload(true);
+    document.querySelector(".expert").addEventListener("click", function(){
+        showExpertLevel();
     });
 };
 
@@ -163,6 +167,24 @@ var endNoviceLevel = function() {
     document.querySelector('.sub-instruct').classList.add('hidden');
 };
 
+var showExpertLevel = function() {
+    document.querySelector('.novice').classList.add('hidden');
+    document.querySelector('.expert').classList.add('hidden');
+    document.querySelector('.master').classList.add('hidden');
+    document.querySelector('.player-1-board').classList.remove('hidden');
+    document.querySelector('.player-2-board').classList.remove('hidden');
+    document.querySelector('.versus').classList.remove('hidden');
+    document.querySelector('.player-1-cards').classList.remove('hidden');
+    document.querySelector('.player-2-cards').classList.remove('hidden');
+    document.querySelector('.sub-instruct').classList.remove('hidden');
+    document.querySelector('.game-status').classList.remove('hidden');
+    document.querySelector('.versus').innerText = "v.s";
+
+    let cards =  document.querySelectorAll('.cards');
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.add('hidden');
+        }
+}
 
 
 // Shuffle the array of cards
