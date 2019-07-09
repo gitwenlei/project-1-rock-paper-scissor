@@ -105,9 +105,14 @@ window.onload = function() {
     initScreen();
 
     document.querySelector(".novice").addEventListener("click", function(){
-    showNoviceLevel();
+        showNoviceLevel();
+    });
+
+    document.querySelector(".return-to-main-btn").addEventListener("click", function() {
+        location.reload(true);
     });
 };
+
 
 var initScreen = function() {
     document.querySelector('.msg').innerText = "Rock, Paper, Scissors";
@@ -127,16 +132,6 @@ var initScreen = function() {
         cards[i].classList.add('hidden');
     }
 };
-
-var returnToMain = function() {
-    // this returns player to main screen where they can choose novice, expert or master level.
-    document.querySelector('.game-status').classList.remove('hidden');
-    var mainButton = document.createElement('div');
-    mainButton.classList.add('return-to-main-btn');
-    mainButton.innerText = 'Return to Main';
-    document.querySelector('.sub-wrapper').appendChild(mainButton);
-}
-
 
 var showNoviceLevel = function() {
     document.querySelector('.novice').classList.add('hidden');
@@ -423,13 +418,6 @@ var displayFinalWinner = function(finalMsg) {
     finalWinner.classList.add('final-winner');
     finalWinner.innerHTML = finalMsg;
     document.querySelector('.game-in-play').appendChild(finalWinner);
-
-    returnToMain();
-    document.querySelector(".return-to-main-btn").addEventListener("click", function(){
-        initScreen();
-        document.querySelector('.return-to-main-btn').remove();
-        document.querySelector('.final-winner').remove();
-    });
 }
 
 
