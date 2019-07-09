@@ -92,6 +92,10 @@ var p2Clicked = false;
 var name1 = null;
 var name2 = null;
 
+var event1 = null;
+var event2 = null;
+
+
 
 window.onload = function() {
     initScreen();
@@ -224,7 +228,7 @@ var showCards = function() {
                 p1Clicked = true;
 
                 name1 = event.target.id;
-                console.log("EVENT 1: " + name1);
+                event1 = event.target;
                 player1Choice = name1;
 
                 let url = this.childNodes[0].src;
@@ -243,8 +247,7 @@ var showCards = function() {
                     p2Clicked = true;
 
                     name2 = event.target.id;
-                    console.log('EVENT: ' + event.target);
-                    console.log('Target: ' + name2);
+                    event2 = event.target;
                     player2Choice = name2;
 
                     let url = this.childNodes[0].src;
@@ -430,7 +433,11 @@ var removeCardsClick = function() {
 };
 
 var removeThumbNails = function() {
-    var thumb1 = document.querySelector('#name1');
-    console.log('thumb:', thumb1);
-    // thumb1.remove();
+    var thumb1 = event1;
+    // console.log('thumb:' + thumb1);
+    thumb1.remove();
+
+    var thumb2 = event2;
+    // console.log('thumb:' + thumb2);
+    thumb2.remove();
 };
