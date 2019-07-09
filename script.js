@@ -345,19 +345,17 @@ function logKey(event) {
     // Check for invalid key pressed
     if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
 
-        p1Typed = true;
-        // Run checkWin
         if (player1Choice === null) {
             player1Choice = x;
         } else {
             player2Choice = x;
-            p2Typed = true;
             checkWin(player1Choice, player2Choice);
+
             player1Choice = null;
             player2Choice = null;
         }
     }
- };
+};
 
 var checkWinClick = function (p1Choice, p2Choice) {
     // console.log("checking now");
