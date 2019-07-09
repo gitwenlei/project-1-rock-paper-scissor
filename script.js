@@ -266,6 +266,7 @@ var showCards = function() {
                             // removeCards();
                             removeCardsClick();
                             removeThumbNails();
+                            hideStatus();
                         }, 1000);
                     }
                     // else {
@@ -370,6 +371,7 @@ var displayStatus = function(msg) {
 
 var hideStatus = function() {
     document.querySelector('.game-status').classList.add('hidden');
+    document.querySelector('.game-status').innerHTML = "";
 };
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
