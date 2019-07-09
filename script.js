@@ -120,6 +120,7 @@ var initScreen = function() {
     document.querySelector('.expert').classList.remove('hidden');
     document.querySelector('.master').classList.remove('hidden');
     document.querySelector('.sub-instruct').classList.add('hidden');
+    document.querySelector('.game-status').classList.add('hidden');
 
     let cards =  document.querySelectorAll('.cards');
     for (var i = 0; i < cards.length; i++) {
@@ -127,6 +128,14 @@ var initScreen = function() {
     }
 };
 
+var returnToMain = function() {
+    // this returns player to main screen where they can choose novice, expert or master level.
+    document.querySelector('.game-status').classList.remove('hidden');
+    var mainButton = document.createElement('div');
+    mainButton.classList.add('return-to-main-btn');
+    mainButton.innerText = 'Return to Main';
+    document.querySelector('.sub-wrapper').appendChild(mainButton);
+}
 
 
 var showNoviceLevel = function() {
@@ -139,6 +148,7 @@ var showNoviceLevel = function() {
     document.querySelector('.player-1-cards').classList.remove('hidden');
     document.querySelector('.player-2-cards').classList.remove('hidden');
     document.querySelector('.sub-instruct').classList.remove('hidden');
+    document.querySelector('.game-status').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
 
     let cards =  document.querySelectorAll('.cards');
@@ -157,6 +167,7 @@ var endNoviceLevel = function() {
     document.querySelector('.versus').classList.add('hidden');
     document.querySelector('.sub-instruct').classList.add('hidden');
 };
+
 
 
 // Shuffle the array of cards
@@ -375,11 +386,14 @@ var gameMsg = function(p1, p2) {
         displayMsg = "it's a draw";
     }
 
-    if (player1Score < player2Score){
-        finalMsg = 'Player 2, you are the winner!';
+    if (player1Score < player2Score) {
+        finalMsg = 'Congrats Player 2! <br /> You are the winner!';
+    } else if (player1Score > player2Score) {
+        finalMsg = 'Congrats Player 1! <br /> You are the winner!';
     } else {
-        finalMsg = 'Player 1, you are the winner!';
+        finalMsg = "It's a draw!";
     }
+
     displayScore(player1Score, player2Score);
     displayStatus(displayMsg);
 };
@@ -403,9 +417,19 @@ var displayScore = function(p1Score, p2Score) {
 };
 
 var displayFinalWinner = function(finalMsg) {
+    document.querySelector('.versus').setAttribute('style', 'color: #f5D6C6;');
+    // document.querySelector('.versus').remove();
     var finalWinner = document.createElement('div');
-    finalWinner.innerText = finalMsg;
+    finalWinner.classList.add('final-winner');
+    finalWinner.innerHTML = finalMsg;
     document.querySelector('.game-in-play').appendChild(finalWinner);
+
+    returnToMain();
+    document.querySelector(".return-to-main-btn").addEventListener("click", function(){
+        initScreen();
+        document.querySelector('.return-to-main-btn').remove();
+        document.querySelector('.final-winner').remove();
+    });
 }
 
 
