@@ -68,19 +68,29 @@
 	display: none;
 }
 
-.instructions-wrapper {
-	display: flex;
-	flex-direction: row;
+.sub-wrapper {
+/*	display: flex;
+	flex-direction: row;*/
 	/*border: 1px solid #00ff00;*/
 }
 
 
 .msg {
 	font-family: 'Fredoka One', cursive;
-	margin: 0 0 30px 0;
+	margin: 0 0 20px 0;
 	width: 100%;
 	text-align: center;
 	font-size: 3em;
+}
+
+.sub-instruct {
+	display: block;
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.sub-instruct .hidden {
+	display: none;
 }
 
 .game-status {
