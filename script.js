@@ -40,6 +40,12 @@ var players = {
             scissors: 'images/scissors.png'
         },
 
+        choiceAndKeyboard: {
+            rock: 'Digit1',
+            paper: 'Digit2',
+            scissors: 'Digit3'
+        },
+
         result: {
             true: 'won',
             false: 'lost',
@@ -67,6 +73,12 @@ var players = {
             rock: 'images/rock.png',
             paper: 'images/paper.png',
             scissors: 'images/scissors.png'
+        },
+
+        choiceAndKeyboard: {
+            rock: 'Digit8',
+            paper: 'Digit9',
+            scissors: 'Digit0'
         },
 
         result: {
@@ -215,7 +227,7 @@ var showMasterLevel = function() {
             cards[i].classList.remove('hidden');
         }
 
-    showCards();
+    // removeCards();
     generateRandomCards(3);
 };
 
@@ -244,24 +256,162 @@ var generateRandomCards = function(max) {
     console.log("deck 1:" + player1Deck);
     console.log("deck 2:" + player2Deck);
 
+    // Create player bank ///////////////////////////////////////////////
     var player1Bank = [];
     player1Bank[0] = players['player1']['choiceAndImg'][player1Deck[0]];
     player1Bank[1] = players['player1']['choiceAndImg'][player1Deck[1]];
     player1Bank[2] = players['player1']['choiceAndImg'][player1Deck[2]];
 
-    for (var i = 0; i < player1Bank.length; i++) {
-        console.log(player1Bank[i]);
-    }
+    // console.log(player1Bank[0]);
+
+    // for (var i = 0; i < player1Bank.length; i++) {
+    //     console.log(player1Bank[i]);
+    // }
 
     var player2Bank = [];
     player2Bank[0] = players['player2']['choiceAndImg'][player2Deck[0]];
     player2Bank[1] = players['player2']['choiceAndImg'][player2Deck[1]];
     player2Bank[2] = players['player2']['choiceAndImg'][player2Deck[2]];
 
-    for (var i = 0; i < player2Bank.length; i++) {
-        console.log(player2Bank[i]);
+    // for (var i = 0; i < player2Bank.length; i++) {
+    //     console.log(player2Bank[i]);
+    // }
+
+    var player1Src = [];
+    player1Src[0] = players['player1']['choiceAndKeyboard'][player1Deck[0]];
+    player1Src[1] = players['player1']['choiceAndKeyboard'][player1Deck[1]];
+    player1Src[2] = players['player1']['choiceAndKeyboard'][player1Deck[2]];
+
+    // console.log(player1Src[0]);
+
+    // for (var i = 0; i < player1Src.length; i++) {
+    //     console.log(player1Src[i]);
+    // }
+
+    var player2Src = [];
+    player2Src[0] = players['player2']['choiceAndKeyboard'][player2Deck[0]];
+    player2Src[1] = players['player2']['choiceAndKeyboard'][player2Deck[1]];
+    player2Src[2] = players['player2']['choiceAndKeyboard'][player2Deck[2]];
+
+    // for (var i = 0; i < player2Src.length; i++) {
+    //     console.log(player2Src[i]);
+    // }
+
+    // END player bank ///////////////////////////////////////////////
+
+
+    let player1Card1 = document.createElement('img');
+    player1Card1.classList.add("img-fluid");
+    player1Card1.setAttribute('src', player1Bank[0]);
+    player1Card1.setAttribute('id', player1Src[0]);
+    document.querySelector('#player-1-card-1').appendChild(player1Card1);
+
+    let player1Card2 = document.createElement('img');
+    player1Card2.classList.add("img-fluid");
+    player1Card2.setAttribute('src', player1Bank[1]);
+    player1Card2.setAttribute('id', player1Src[1]);
+    document.querySelector('#player-1-card-2').appendChild(player1Card2);
+
+    let player1Card3 = document.createElement('img');
+    player1Card3.classList.add("img-fluid");
+    player1Card3.setAttribute('src', player1Bank[2]);
+    player1Card3.setAttribute('id', player1Src[2]);
+    document.querySelector('#player-1-card-3').appendChild(player1Card3);
+
+    let player2Card1 = document.createElement('img');
+    player2Card1.classList.add("img-fluid");
+    player2Card1.setAttribute('src', player2Bank[0]);
+    player2Card1.setAttribute('id', player2Src[0]);
+    document.querySelector('#player-2-card-1').appendChild(player2Card1);
+
+    let player2Card2 = document.createElement('img');
+    player2Card2.classList.add("img-fluid");
+    player2Card2.setAttribute('src', player2Bank[1]);
+    player2Card2.setAttribute('id', player2Src[1]);
+    document.querySelector('#player-2-card-2').appendChild(player2Card2);
+
+    let player2Card3 = document.createElement('img');
+    player2Card3.classList.add("img-fluid");
+    player2Card3.setAttribute('src', player2Bank[2]);
+    player2Card3.setAttribute('id', player2Src[2]);
+    document.querySelector('#player-2-card-3').appendChild(player2Card3);
+
+    var cardsList = document.querySelectorAll('.cards');
+    let x = cardsList.length;
+
+    for (var i = 0; i < x/2 ; i++) {
+        cardsList[i].addEventListener('click', function() {
+            if (!p1Clicked) {
+                p1Clicked = true;
+                this.remove();
+
+                name1 = event.target.id;
+                event1 = event.target;
+                player1Choice = name1;
+
+                let url = this.childNodes[0].src;
+                // console.log(url);
+                displayChosenCard1(url);
+            }
+        });
+     }
+
+    let cardPlayed = 0;
+
+    for (var i = 3; i < x ; i++) {
+        cardsList[i].addEventListener('click', function() {
+
+                if (p1Clicked) {
+                    if (!p2Clicked) {
+                        p2Clicked = true;
+                        this.remove();
+
+                        // Check num of cards played in deck
+                        cardPlayed++;
+                        console.log('card played:' + cardPlayed);
+
+                        name2 = event.target.id;
+                        event2 = event.target;
+                        player2Choice = name2;
+
+                        let url = this.childNodes[0].src;
+                        // console.log(url);
+                        displayChosenCard2(url);
+
+                        if (p1Clicked && p2Clicked) {
+                            // player1Choice = name1;
+                            checkWinClick(player1Choice, player2Choice);
+
+                            var onePtFiveSeconds = setTimeout(function() {
+                                // console.log("time out");
+                                // removeCards();
+                                removeCardsClick();
+                                removeThumbNails();
+                                hideStatus();
+                                p1Clicked = false;
+                                p2Clicked = false;
+                                //IF CARDS PLAYED IS 3,
+                                if (cardPlayed === 3) {
+                                    console.log("RUN END NOVICE LEVEL");
+                                    endNoviceLevel();
+                                    displayFinalWinner(finalMsg);
+                                }
+
+                            }, 1500);
+                        }
+                    }
+                } else {
+                    alert("Please Wait for Player 1");
+            }
+        });
     }
 };
+
+
+// var showRandomCards = function() {
+
+// }
+
 
 
 // Display this random cards
@@ -389,14 +539,17 @@ function logKey(event) {
     // // Check for invalid key pressed
     if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
 
-        if (player1Choice === null) {
-            player1Choice = x;
-        } else {
-            player2Choice = x;
-            checkWin(player1Choice, player2Choice);
-
-            player1Choice = null;
-            player2Choice = null;
+            if (player1Choice === null) {
+                player1Choice = x;
+            } else {
+                player2Choice = x;
+                checkWin(player1Choice, player2Choice);
+                var twoSeconds = setTimeout(function() {
+                    removeCards();
+                    hideStatus();
+                    player1Choice = null;
+                    player2Choice = null;
+                }, 2000);
         }
     }
 };
@@ -434,17 +587,17 @@ var gameMsg = function(p1, p2) {
     var msg = players['player1']['result'][state];
 
     if (msg === 'won') {
-        displayMsg = "player 1 " + msg; // this means player 1 won
+        displayMsg = "Player 1 " + msg; // this means player 1 won
         player1Score = player1Score + 1;
         console.log('P1: ' + player1Score);
 
     } else if (msg === 'lost') { // this means player 1 lost. therefore player 2 won
-        displayMsg = "player 2 won";
+        displayMsg = "Player 2 won";
         player2Score = player2Score + 1;
         console.log('P2: ' + player2Score);
 
     } else {
-        displayMsg = "it's a draw";
+        displayMsg = "It's a tie!";
     }
 
     if (player1Score < player2Score) {
@@ -452,7 +605,7 @@ var gameMsg = function(p1, p2) {
     } else if (player1Score > player2Score) {
         finalMsg = 'Congrats Player 1! <br /> You are the winner!';
     } else {
-        finalMsg = "It's a draw!";
+        finalMsg = "Wow! A close match!";
     }
 
     displayScore(player1Score, player2Score);
