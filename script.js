@@ -89,6 +89,9 @@ var player2Deck = [];
 var p1Clicked = false;
 var p2Clicked = false;
 
+var p1Typed = false;
+var p2Typed = false;
+
 var name1 = null;
 var name2 = null;
 
@@ -178,7 +181,7 @@ var showExpertLevel = function() {
     document.querySelector('.player-2-cards').classList.remove('hidden');
 
     document.querySelector('.sub-instruct').classList.remove('hidden');
-    document.querySelector('.sub-instruct').innerHTML = "Pressed the assigned keyboard keys to select your weapon. <br /> Player 1 Keys: 1, 2, 3 <br /> Player 2 Keys: 8, 9, 0 ";
+    document.querySelector('.sub-instruct').innerHTML = "Pressed the assigned keyboard keys to select your weapon. <br /> Player 1 Keys: 1 (Rock), 2 (Paper), 3 (Scissors) <br /> Player 2 Keys: 8 (Rock), 9 (Paper), 0 (Scissors) ";
 
     document.querySelector('.game-status').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
@@ -336,24 +339,19 @@ document.addEventListener('keydown', logKey);
 
 function logKey(event) {
 
-    // console.log(event);
-
     removeCards();
     var x = event.code;
-    // console.log(x);
-
 
     // Check for invalid key pressed
     if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
 
+        p1Typed = true;
         // Run checkWin
-        if (player1Choice === null){
-        player1Choice = x;
-        // console.log("player one choice: ", player1Choice);
-    }
-        else {
+        if (player1Choice === null) {
+            player1Choice = x;
+        } else {
             player2Choice = x;
-            // console.log("player two choice: ", player2Choice);
+            p2Typed = true;
             checkWin(player1Choice, player2Choice);
             player1Choice = null;
             player2Choice = null;
