@@ -102,6 +102,8 @@ document.querySelector(".start").addEventListener("click", function(){
     showBoard();
 });
 
+
+
 var showBoard = function() {
     document.querySelector('.start').classList.add('hidden');
     document.querySelector('.player-1-board').classList.remove('hidden');
@@ -147,6 +149,7 @@ var showCards = function() {
         let player1Card1 = document.createElement('img');
         player1Card1.classList.add("img-fluid");
         player1Card1.setAttribute('src', 'images/rock.png');
+        player1Card1.setAttribute('id', 'rock');
         document.querySelector('#player-1-card-1').appendChild(player1Card1);
 
         let player1Card2 = document.createElement('img');
@@ -186,6 +189,10 @@ var showCards = function() {
                 // console.log(this);
                 // console.log(this.id);
                 // console.log(cardsList[0].childNodes[0].src);
+
+                // if (player1Clicked === false){
+                console.log(event.target.id);
+
                 let url = this.childNodes[0].src;
                 console.log(url);
                 displayChosenCard1(url);
@@ -211,6 +218,8 @@ var showCards = function() {
 document.addEventListener('keydown', logKey);
 
 function logKey(event) {
+
+    console.log(event);
 
     removeCards();
     var x = event.code;
@@ -261,8 +270,12 @@ var gameMsg = function(p1, p2) {
     displayStatus(displayMsg);
 };
 
+// var displayStatus = function(msg) {
+//     document.querySelector('.msg').innerHTML = msg;
+// };
+
 var displayStatus = function(msg) {
-    document.querySelector('.msg').innerHTML = msg;
+    document.querySelector('.game-status').innerHTML = msg;
 };
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
