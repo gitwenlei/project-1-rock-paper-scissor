@@ -91,6 +91,10 @@
 	padding: 20px 20px 0 20px;
 }
 
+.player-1-cards .hidden {
+	display: none;
+}
+
 .player-2-bar {
 	display: flex;
 	flex-direction: column;
@@ -115,13 +119,23 @@
 	padding: 20px 20px 0 20px;
 }
 
+
+.player-2-cards .hidden {
+	display: none;
+}
+
 .cards {
+	display: block;
 	margin: 20px 0;
 	width: 100px;
 	height: 100px;
 /*	border: 1px solid red;*/
 	background-color: #fff;
 	border-radius: 5px;
+}
+
+.cards .hidden {
+	display: none;
 }
 
 
