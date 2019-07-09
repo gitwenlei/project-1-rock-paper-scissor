@@ -129,6 +129,8 @@
 }
 
 .player-1-points {
+	font-size: 1.2em;
+	font-weight: 700;
 /*	background-color: #FD8008;*/
 }
 
@@ -157,6 +159,8 @@
 }
 
 .player-2-points {
+	font-size: 1.2em;
+	font-weight: 700;
 /*	background-color: #0F80FF;*/
 }
 
