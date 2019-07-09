@@ -118,6 +118,12 @@ window.onload = function() {
     document.querySelector(".expert").addEventListener("click", function(){
         showExpertLevel();
     });
+
+    document.querySelector(".master").addEventListener("click", function(){
+        showMasterLevel();
+    });
+
+
 };
 
 
@@ -159,7 +165,6 @@ var showNoviceLevel = function() {
         }
 
     showCards();
-    generateRandomCards(3);
 };
 
 
@@ -192,6 +197,28 @@ var showExpertLevel = function() {
         }
 }
 
+var showMasterLevel = function() {
+    document.querySelector('.novice').classList.add('hidden');
+    document.querySelector('.expert').classList.add('hidden');
+    document.querySelector('.master').classList.add('hidden');
+    document.querySelector('.player-1-board').classList.remove('hidden');
+    document.querySelector('.player-2-board').classList.remove('hidden');
+    document.querySelector('.versus').classList.remove('hidden');
+    document.querySelector('.player-1-cards').classList.remove('hidden');
+    document.querySelector('.player-2-cards').classList.remove('hidden');
+    document.querySelector('.sub-instruct').classList.remove('hidden');
+    document.querySelector('.game-status').classList.remove('hidden');
+    document.querySelector('.versus').innerText = "v.s";
+
+    let cards =  document.querySelectorAll('.cards');
+        for (var i = 0; i < cards.length; i++) {
+            cards[i].classList.remove('hidden');
+        }
+
+    showCards();
+    generateRandomCards(3);
+};
+
 
 // Shuffle the array of cards
 var generateRandomCards = function(max) {
@@ -216,6 +243,24 @@ var generateRandomCards = function(max) {
     }
     console.log("deck 1:" + player1Deck);
     console.log("deck 2:" + player2Deck);
+
+    var player1Bank = [];
+    player1Bank[0] = players['player1']['choiceAndImg'][player1Deck[0]];
+    player1Bank[1] = players['player1']['choiceAndImg'][player1Deck[1]];
+    player1Bank[2] = players['player1']['choiceAndImg'][player1Deck[2]];
+
+    for (var i = 0; i < player1Bank.length; i++) {
+        console.log(player1Bank[i]);
+    }
+
+    var player2Bank = [];
+    player2Bank[0] = players['player2']['choiceAndImg'][player2Deck[0]];
+    player2Bank[1] = players['player2']['choiceAndImg'][player2Deck[1]];
+    player2Bank[2] = players['player2']['choiceAndImg'][player2Deck[2]];
+
+    for (var i = 0; i < player2Bank.length; i++) {
+        console.log(player2Bank[i]);
+    }
 };
 
 
@@ -338,11 +383,10 @@ var showCards = function() {
 document.addEventListener('keydown', logKey);
 
 function logKey(event) {
-
     removeCards();
     var x = event.code;
 
-    // Check for invalid key pressed
+    // // Check for invalid key pressed
     if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
 
         if (player1Choice === null) {
@@ -356,6 +400,7 @@ function logKey(event) {
         }
     }
 };
+
 
 var checkWinClick = function (p1Choice, p2Choice) {
     // console.log("checking now");
