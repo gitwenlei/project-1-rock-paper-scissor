@@ -6,6 +6,7 @@
 	flex-direction: row;
 /*	border: 1px solid #E94B3C;*/
 	max-width: 960px;
+	height: auto;
 }
 
 
@@ -57,6 +58,10 @@
 	text-align: center;
 	font-size: 2.5em;
 	background-color: #FF6F61;
+}
+
+.game-status .hidden {
+	display: none;
 }
 
 
