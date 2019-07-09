@@ -149,17 +149,19 @@ var showCards = function() {
         let player1Card1 = document.createElement('img');
         player1Card1.classList.add("img-fluid");
         player1Card1.setAttribute('src', 'images/rock.png');
-        player1Card1.setAttribute('id', 'rock');
+        player1Card1.setAttribute('name', 'rock');
         document.querySelector('#player-1-card-1').appendChild(player1Card1);
 
         let player1Card2 = document.createElement('img');
         player1Card2.classList.add("img-fluid");
         player1Card2.setAttribute('src', 'images/paper.png');
+        player1Card2.setAttribute('name', 'paper');
         document.querySelector('#player-1-card-2').appendChild(player1Card2);
 
         let player1Card3 = document.createElement('img');
         player1Card3.classList.add("img-fluid");
         player1Card3.setAttribute('src', 'images/scissors.png');
+        player1Card3.setAttribute('name', 'scissors');
         document.querySelector('#player-1-card-3').appendChild(player1Card3);
 
 
@@ -167,16 +169,19 @@ var showCards = function() {
         let player2Card1 = document.createElement('img');
         player2Card1.classList.add("img-fluid");
         player2Card1.setAttribute('src', 'images/scissors.png');
+        player2Card1.setAttribute('name', 'scissors');
         document.querySelector('#player-2-card-1').appendChild(player2Card1);
 
         let player2Card2 = document.createElement('img');
         player2Card2.classList.add("img-fluid");
         player2Card2.setAttribute('src', 'images/rock.png');
+        player2Card2.setAttribute('name', 'rock');
         document.querySelector('#player-2-card-2').appendChild(player2Card2);
 
         let player2Card3 = document.createElement('img');
         player2Card3.classList.add("img-fluid");
         player2Card3.setAttribute('src', 'images/paper.png');
+        player2Card3.setAttribute('name', 'paper');
         document.querySelector('#player-2-card-3').appendChild(player2Card3);
 
         // check for clicks
@@ -191,10 +196,9 @@ var showCards = function() {
                 // console.log(cardsList[0].childNodes[0].src);
 
                 // if (player1Clicked === false){
-                console.log(event.target.id);
-
+                console.log(event.target.name);
                 let url = this.childNodes[0].src;
-                console.log(url);
+                // console.log(url);
                 displayChosenCard1(url);
             });
 
@@ -205,6 +209,7 @@ var showCards = function() {
                 // console.log(this);
                 // console.log(this.id);
                 // console.log(cardsList[0].childNodes[0].src);
+                console.log(event.target.name);
                 let url = this.childNodes[0].src;
                 console.log(url);
                 displayChosenCard2(url);
