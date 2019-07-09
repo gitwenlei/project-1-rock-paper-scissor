@@ -12,11 +12,11 @@
 
 .start {
 	color: #fff;
-	font-size: 1em;
-	background-color: #DD4132;
-	width: 120px;
-	height: 50px;
-	/*border-radius: 10px;*/
+	font-size: 1.5em;
+	background-color: #BD3D3A;
+	width: 150px;
+	height: 70px;
+	border-radius: 7px;
 	margin: 0 10px;
 }
 
