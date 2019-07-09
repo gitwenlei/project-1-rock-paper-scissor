@@ -99,6 +99,10 @@ var event2 = null;
 
 window.onload = function() {
     initScreen();
+
+    document.querySelector(".novice").addEventListener("click", function(){
+    showBoard();
+    });
 };
 
 var initScreen = function() {
@@ -108,7 +112,7 @@ var initScreen = function() {
     document.querySelector('.versus').classList.add('hidden');
     document.querySelector('.player-1-cards').classList.add('hidden');
     document.querySelector('.player-2-cards').classList.add('hidden');
-    document.querySelector('.start').classList.remove('hidden');
+    document.querySelector('.novice').classList.remove('hidden');
 
     let cards =  document.querySelectorAll('.cards');
     for (var i = 0; i < cards.length; i++) {
@@ -116,14 +120,10 @@ var initScreen = function() {
     }
 };
 
-document.querySelector(".start").addEventListener("click", function(){
-    showBoard();
-});
-
 
 
 var showBoard = function() {
-    document.querySelector('.start').classList.add('hidden');
+    document.querySelector('.novice').classList.add('hidden');
     document.querySelector('.player-1-board').classList.remove('hidden');
     document.querySelector('.player-2-board').classList.remove('hidden');
     document.querySelector('.versus').classList.remove('hidden');
@@ -132,7 +132,6 @@ var showBoard = function() {
     document.querySelector('.versus').innerText = "v.s";
 
     let cards =  document.querySelectorAll('.cards');
-
         for (var i = 0; i < cards.length; i++) {
             cards[i].classList.remove('hidden');
         }
@@ -279,7 +278,7 @@ var showCards = function() {
                             }
                         }
                     } else {
-                        alert("Please Wait for player 1");
+                        alert("Please Wait for Player 1");
                     }
                 });
             }
