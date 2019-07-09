@@ -282,3 +282,25 @@
 .return-to-main-btn .hidden {
 	display: none;
 }
+
+#player-1-card-3 {
+	/*display: block;*/
+	/*background-color: #BFD641;*/
+}
+
+#player-1-card-3 .hidden {
+	display: none;
+}
+
+#player-2-card-3 {
+	/*display: block;*/
+	/*background-color: #BFD641;*/
+}
+
+#player-2-card-3 .hidden {
+	display: none;
+}
+
+.secret-card {
+	opacity: 0.01;
+}
