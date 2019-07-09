@@ -98,6 +98,8 @@ var event2 = null;
 var player1Score = 0;
 var player2Score = 0;
 
+var finalMsg = "";
+
 
 window.onload = function() {
     initScreen();
@@ -284,6 +286,7 @@ var showCards = function() {
                                     if (cardPlayed === 3) {
                                         console.log("RUN END NOVICE LEVEL");
                                         endNoviceLevel();
+                                        displayFinalWinner(finalMsg);
                                     }
 
                                 }, 1500);
@@ -353,31 +356,34 @@ var checkWin = function (p1Choice, p2Choice) {
 // Display game message based on player's choice
 var gameMsg = function(p1, p2) {
 
-
     var state = weapons[p1]['strength with ' + p2];
-    // console.log("state of game: " + state);
-
+    var displayMsg;
     // Check which player won
     var msg = players['player1']['result'][state];
 
     if (msg === 'won') {
-        var displayMsg = "player 1 " + msg; // this means player 1 won
+        displayMsg = "player 1 " + msg; // this means player 1 won
         player1Score = player1Score + 1;
         console.log('P1: ' + player1Score);
+
     } else if (msg === 'lost') { // this means player 1 lost. therefore player 2 won
         displayMsg = "player 2 won";
         player2Score = player2Score + 1;
         console.log('P2: ' + player2Score);
+
     } else {
         displayMsg = "it's a draw";
+    }
+
+    if (player1Score < player2Score){
+        finalMsg = 'Player 2, you are the winner!';
+    } else {
+        finalMsg = 'Player 1, you are the winner!';
     }
     displayScore(player1Score, player2Score);
     displayStatus(displayMsg);
 };
 
-// var displayStatus = function(msg) {
-//     document.querySelector('.msg').innerHTML = msg;
-// };
 
 var displayStatus = function(msg) {
     var thirdSecond = setTimeout(function() {
@@ -395,6 +401,12 @@ var displayScore = function(p1Score, p2Score) {
     document.querySelector('.player-1-points').innerHTML = 'Points: ' + p1Score;
     document.querySelector('.player-2-points').innerHTML = 'Points: ' + p2Score;
 };
+
+var displayFinalWinner = function(finalMsg) {
+    var finalWinner = document.createElement('div');
+    finalWinner.innerText = finalMsg;
+    document.querySelector('.game-in-play').appendChild(finalWinner);
+}
 
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
