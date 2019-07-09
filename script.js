@@ -176,7 +176,10 @@ var showExpertLevel = function() {
     document.querySelector('.versus').classList.remove('hidden');
     document.querySelector('.player-1-cards').classList.remove('hidden');
     document.querySelector('.player-2-cards').classList.remove('hidden');
+
     document.querySelector('.sub-instruct').classList.remove('hidden');
+    document.querySelector('.sub-instruct').innerHTML = "Pressed the assigned keyboard keys to select your weapon. <br /> Player 1 Keys: 1, 2, 3 <br /> Player 2 Keys: 8, 9, 0 ";
+
     document.querySelector('.game-status').classList.remove('hidden');
     document.querySelector('.versus').innerText = "v.s";
 
