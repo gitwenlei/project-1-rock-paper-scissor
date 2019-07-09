@@ -95,6 +95,8 @@ var name2 = null;
 var event1 = null;
 var event2 = null;
 
+var player1Score = 0;
+var player2Score = 0;
 
 
 window.onload = function() {
@@ -351,6 +353,7 @@ var checkWin = function (p1Choice, p2Choice) {
 // Display game message based on player's choice
 var gameMsg = function(p1, p2) {
 
+
     var state = weapons[p1]['strength with ' + p2];
     // console.log("state of game: " + state);
 
@@ -359,13 +362,16 @@ var gameMsg = function(p1, p2) {
 
     if (msg === 'won') {
         var displayMsg = "player 1 " + msg; // this means player 1 won
+        player1Score = player1Score + 1;
+        console.log('P1: ' + player1Score);
     } else if (msg === 'lost') { // this means player 1 lost. therefore player 2 won
         displayMsg = "player 2 won";
+        player2Score = player2Score + 1;
+        console.log('P2: ' + player2Score);
     } else {
         displayMsg = "it's a draw";
     }
-    // console.log(displayMsg);
-    // return displayMsg;
+    displayScore(player1Score, player2Score);
     displayStatus(displayMsg);
 };
 
@@ -384,6 +390,12 @@ var hideStatus = function() {
     document.querySelector('.game-status').classList.add('hidden');
     document.querySelector('.game-status').innerHTML = "";
 };
+
+var displayScore = function(p1Score, p2Score) {
+    document.querySelector('.player-1-points').innerHTML = 'Points: ' + p1Score;
+    document.querySelector('.player-2-points').innerHTML = 'Points: ' + p2Score;
+};
+
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
     var player1Symbol = players['player1']['choiceAndImg'][p1Weapon];
