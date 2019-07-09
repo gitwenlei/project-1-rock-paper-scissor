@@ -171,19 +171,19 @@ var showCards = function() {
         let player1Card1 = document.createElement('img');
         player1Card1.classList.add("img-fluid");
         player1Card1.setAttribute('src', 'images/rock.png');
-        player1Card1.setAttribute('name', 'Digit1');
+        player1Card1.setAttribute('id', 'Digit1');
         document.querySelector('#player-1-card-1').appendChild(player1Card1);
 
         let player1Card2 = document.createElement('img');
         player1Card2.classList.add("img-fluid");
         player1Card2.setAttribute('src', 'images/paper.png');
-        player1Card2.setAttribute('name', 'Digit2');
+        player1Card2.setAttribute('id', 'Digit2');
         document.querySelector('#player-1-card-2').appendChild(player1Card2);
 
         let player1Card3 = document.createElement('img');
         player1Card3.classList.add("img-fluid");
         player1Card3.setAttribute('src', 'images/scissors.png');
-        player1Card3.setAttribute('name', 'Digit3');
+        player1Card3.setAttribute('id', 'Digit3');
         document.querySelector('#player-1-card-3').appendChild(player1Card3);
 
 
@@ -191,19 +191,19 @@ var showCards = function() {
         let player2Card1 = document.createElement('img');
         player2Card1.classList.add("img-fluid");
         player2Card1.setAttribute('src', 'images/scissors.png');
-        player2Card1.setAttribute('name', 'Digit0');
+        player2Card1.setAttribute('id', 'Digit0');
         document.querySelector('#player-2-card-1').appendChild(player2Card1);
 
         let player2Card2 = document.createElement('img');
         player2Card2.classList.add("img-fluid");
         player2Card2.setAttribute('src', 'images/rock.png');
-        player2Card2.setAttribute('name', 'Digit8');
+        player2Card2.setAttribute('id', 'Digit8');
         document.querySelector('#player-2-card-2').appendChild(player2Card2);
 
         let player2Card3 = document.createElement('img');
         player2Card3.classList.add("img-fluid");
         player2Card3.setAttribute('src', 'images/paper.png');
-        player2Card3.setAttribute('name', 'Digit9');
+        player2Card3.setAttribute('id', 'Digit9');
         document.querySelector('#player-2-card-3').appendChild(player2Card3);
 
         // check for clicks
@@ -222,9 +222,10 @@ var showCards = function() {
 
                 // if (player1Clicked === false){
                 p1Clicked = true;
-                // console.log(event.target.name);
-                name1 = event.target.name;
-                player2Choice = name1;
+
+                name1 = event.target.id;
+                console.log("EVENT 1: " + name1);
+                player1Choice = name1;
 
                 let url = this.childNodes[0].src;
                 // console.log(url);
@@ -240,21 +241,43 @@ var showCards = function() {
                     // console.log(this.id);
                     // console.log(cardsList[0].childNodes[0].src);
                     p2Clicked = true;
-                    // console.log(event.target.name);
-                    name2 = event.target.name;
+
+                    name2 = event.target.id;
+                    console.log('EVENT: ' + event.target);
+                    console.log('Target: ' + name2);
                     player2Choice = name2;
 
                     let url = this.childNodes[0].src;
                     // console.log(url);
                     displayChosenCard2(url);
                     console.log("clicked: " + name1 +  ", " + name2);
-                    checkWinClick(name1, name2);
-                });
 
+                    // checkWinClick(player1Choice, player2Choice);
+
+                    if (p1Clicked && p2Clicked) {
+                        // player1Choice = name1;
+                        checkWinClick(player1Choice, player2Choice);
+
+                        var threeSeconds = setTimeout(function() {
+                            console.log("time out");
+                            // removeCards();
+                            removeCardsClick();
+                            removeThumbNails();
+                        }, 1000);
+                    }
+                    // else {
+
+                    //     player1Choice = null;
+                    //     player2Choice = null;
+
+                    // }
+                });
             }
             // console.log("clicked: " + name1 +  ", " + name2);
             // checkWin(name1, name2);
+
         // }
+
 
 };
 
@@ -338,7 +361,12 @@ var gameMsg = function(p1, p2) {
 // };
 
 var displayStatus = function(msg) {
+    document.querySelector('.game-status').classList.remove('hidden');
     document.querySelector('.game-status').innerHTML = msg;
+};
+
+var hideStatus = function() {
+    document.querySelector('.game-status').classList.add('hidden');
 };
 
 var displayChosenCards = function(p1Weapon, p2Weapon) {
@@ -351,11 +379,13 @@ var displayChosenCards = function(p1Weapon, p2Weapon) {
     var player1Card = document.createElement('img');
     player1Card.classList.add("img-fluid");
     player1Card.setAttribute('src', player1Symbol);
+    player1Card.setAttribute('id', 'p1-img-key');
     document.querySelector('.player-1-choice').appendChild(player1Card);
 
     var player2Card = document.createElement('img');
     player2Card.classList.add("img-fluid");
     player2Card.setAttribute('src', player2Symbol);
+    player2Card.setAttribute('id', 'p2-img-key');
     document.querySelector('.player-2-choice').appendChild(player2Card);
 };
 
@@ -367,6 +397,7 @@ var displayChosenCard1 = function(p1Weapon) {
     var player1Card = document.createElement('img');
     player1Card.classList.add("img-fluid");
     player1Card.setAttribute('src', p1Weapon);
+    player1Card.setAttribute('id', 'p1-img-click');
     document.querySelector('.player-1-choice').appendChild(player1Card);
 };
 
@@ -378,6 +409,7 @@ var displayChosenCard2 = function(p2Weapon) {
     var player2Card = document.createElement('img');
     player2Card.classList.add("img-fluid");
     player2Card.setAttribute('src', p2Weapon);
+    player2Card.setAttribute('id', 'p2-img-click');
     document.querySelector('.player-2-choice').appendChild(player2Card);
 };
 
@@ -388,4 +420,17 @@ var removeCards = function() {
     for (i=0;i<images.length;i++) {
         images[i].remove()
     }
+};
+
+var removeCardsClick = function() {
+    var img1 = document.querySelector('#p1-img-click');
+    var img2 = document.querySelector('#p2-img-click');
+    img1.remove();
+    img2.remove();
+};
+
+var removeThumbNails = function() {
+    var thumb1 = document.querySelector('#name1');
+    console.log('thumb:', thumb1);
+    // thumb1.remove();
 };
