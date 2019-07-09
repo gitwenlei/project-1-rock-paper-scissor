@@ -227,7 +227,7 @@ var showMasterLevel = function() {
             cards[i].classList.remove('hidden');
         }
 
-    // removeCards();
+    removeCards();
     generateRandomCards(3);
 };
 
@@ -253,6 +253,7 @@ var generateRandomCards = function(max) {
         let cards2 = players['player2']['options'][numArray[j]];
         player2Deck.push(cards2);
     }
+
     console.log("deck 1:" + player1Deck);
     console.log("deck 2:" + player2Deck);
 
@@ -261,6 +262,7 @@ var generateRandomCards = function(max) {
     player1Bank[0] = players['player1']['choiceAndImg'][player1Deck[0]];
     player1Bank[1] = players['player1']['choiceAndImg'][player1Deck[1]];
     player1Bank[2] = players['player1']['choiceAndImg'][player1Deck[2]];
+
 
     // console.log(player1Bank[0]);
 
@@ -273,6 +275,7 @@ var generateRandomCards = function(max) {
     player2Bank[1] = players['player2']['choiceAndImg'][player2Deck[1]];
     player2Bank[2] = players['player2']['choiceAndImg'][player2Deck[2]];
 
+
     // for (var i = 0; i < player2Bank.length; i++) {
     //     console.log(player2Bank[i]);
     // }
@@ -282,7 +285,7 @@ var generateRandomCards = function(max) {
     player1Src[1] = players['player1']['choiceAndKeyboard'][player1Deck[1]];
     player1Src[2] = players['player1']['choiceAndKeyboard'][player1Deck[2]];
 
-    // console.log(player1Src[0]);
+    console.log("P1choice&keyboard: " + player1Src[2]);
 
     // for (var i = 0; i < player1Src.length; i++) {
     //     console.log(player1Src[i]);
@@ -293,13 +296,15 @@ var generateRandomCards = function(max) {
     player2Src[1] = players['player2']['choiceAndKeyboard'][player2Deck[1]];
     player2Src[2] = players['player2']['choiceAndKeyboard'][player2Deck[2]];
 
+    console.log("P2choice&keyboard: " + player2Src[2]);
+
     // for (var i = 0; i < player2Src.length; i++) {
     //     console.log(player2Src[i]);
     // }
 
     // END player bank ///////////////////////////////////////////////
 
-
+    // Player 1 Cards
     let player1Card1 = document.createElement('img');
     player1Card1.classList.add("img-fluid");
     player1Card1.setAttribute('src', player1Bank[0]);
@@ -314,10 +319,14 @@ var generateRandomCards = function(max) {
 
     let player1Card3 = document.createElement('img');
     player1Card3.classList.add("img-fluid");
+    player1Card3.classList.add("secret-card");
     player1Card3.setAttribute('src', player1Bank[2]);
     player1Card3.setAttribute('id', player1Src[2]);
     document.querySelector('#player-1-card-3').appendChild(player1Card3);
+    console.log(player1Card3);
+    // player1Card3.classList.add('hidden');
 
+    // Player 2 Cards
     let player2Card1 = document.createElement('img');
     player2Card1.classList.add("img-fluid");
     player2Card1.setAttribute('src', player2Bank[0]);
@@ -332,9 +341,12 @@ var generateRandomCards = function(max) {
 
     let player2Card3 = document.createElement('img');
     player2Card3.classList.add("img-fluid");
+    player2Card3.classList.add("secret-card");
     player2Card3.setAttribute('src', player2Bank[2]);
     player2Card3.setAttribute('id', player2Src[2]);
     document.querySelector('#player-2-card-3').appendChild(player2Card3);
+    // player2Card3.classList.add('hidden');
+
 
     var cardsList = document.querySelectorAll('.cards');
     let x = cardsList.length;
@@ -380,6 +392,9 @@ var generateRandomCards = function(max) {
 
                         if (p1Clicked && p2Clicked) {
                             // player1Choice = name1;
+                            console.log("p1: " , player1Choice);
+                            console.log("p2: " , player2Choice);
+
                             checkWinClick(player1Choice, player2Choice);
 
                             var onePtFiveSeconds = setTimeout(function() {
@@ -392,7 +407,7 @@ var generateRandomCards = function(max) {
                                 p2Clicked = false;
                                 //IF CARDS PLAYED IS 3,
                                 if (cardPlayed === 3) {
-                                    console.log("RUN END NOVICE LEVEL");
+                                    // console.log("RUN END NOVICE LEVEL");
                                     endNoviceLevel();
                                     displayFinalWinner(finalMsg);
                                 }
