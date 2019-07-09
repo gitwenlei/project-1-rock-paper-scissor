@@ -10,19 +10,51 @@
 }
 
 
-.start {
-	color: #fff;
+.novice {
+	color: #000;
 	font-size: 1.5em;
-	background-color: #BD3D3A;
-	width: 150px;
-	height: 70px;
-	border-radius: 7px;
+	background-color: #fff;
+	width: 180px;
+	height: 220px;
+	border-radius: 15px;
+	border: 5px solid #333333;
 	margin: 0 10px;
 }
 
-.start .hidden {
+.novice .hidden {
 	display: none;
 }
+
+.expert {
+	color: #000;
+	font-size: 1.5em;
+	background-color: #fff;
+	width: 180px;
+	height: 220px;
+	border-radius: 15px;
+	border: 5px solid #333333;
+	margin: 0 10px;
+}
+
+.expert .hidden {
+	display: none;
+}
+
+.master {
+	color: #000;
+	font-size: 1.5em;
+	background-color: #fff;
+	width: 180px;
+	height: 220px;
+	border-radius: 15px;
+	border: 5px solid #333333;
+	margin: 0 10px;
+}
+
+.master .hidden {
+	display: none;
+}
+
 
 
 .game-board {
