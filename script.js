@@ -86,6 +86,13 @@ var player2Choice = null;
 var player1Deck = [];
 var player2Deck = [];
 
+var p1Clicked = false;
+var p2Clicked = false;
+
+var name1 = null;
+var name2 = null;
+
+
 window.onload = function() {
     initScreen();
 };
@@ -149,19 +156,19 @@ var showCards = function() {
         let player1Card1 = document.createElement('img');
         player1Card1.classList.add("img-fluid");
         player1Card1.setAttribute('src', 'images/rock.png');
-        player1Card1.setAttribute('name', 'rock');
+        player1Card1.setAttribute('name', 'Digit1');
         document.querySelector('#player-1-card-1').appendChild(player1Card1);
 
         let player1Card2 = document.createElement('img');
         player1Card2.classList.add("img-fluid");
         player1Card2.setAttribute('src', 'images/paper.png');
-        player1Card2.setAttribute('name', 'paper');
+        player1Card2.setAttribute('name', 'Digit2');
         document.querySelector('#player-1-card-2').appendChild(player1Card2);
 
         let player1Card3 = document.createElement('img');
         player1Card3.classList.add("img-fluid");
         player1Card3.setAttribute('src', 'images/scissors.png');
-        player1Card3.setAttribute('name', 'scissors');
+        player1Card3.setAttribute('name', 'Digit3');
         document.querySelector('#player-1-card-3').appendChild(player1Card3);
 
 
@@ -169,19 +176,19 @@ var showCards = function() {
         let player2Card1 = document.createElement('img');
         player2Card1.classList.add("img-fluid");
         player2Card1.setAttribute('src', 'images/scissors.png');
-        player2Card1.setAttribute('name', 'scissors');
+        player2Card1.setAttribute('name', 'Digit0');
         document.querySelector('#player-2-card-1').appendChild(player2Card1);
 
         let player2Card2 = document.createElement('img');
         player2Card2.classList.add("img-fluid");
         player2Card2.setAttribute('src', 'images/rock.png');
-        player2Card2.setAttribute('name', 'rock');
+        player2Card2.setAttribute('name', 'Digit8');
         document.querySelector('#player-2-card-2').appendChild(player2Card2);
 
         let player2Card3 = document.createElement('img');
         player2Card3.classList.add("img-fluid");
         player2Card3.setAttribute('src', 'images/paper.png');
-        player2Card3.setAttribute('name', 'paper');
+        player2Card3.setAttribute('name', 'Digit9');
         document.querySelector('#player-2-card-3').appendChild(player2Card3);
 
         // check for clicks
@@ -189,33 +196,51 @@ var showCards = function() {
         let x = cardsList.length;
         console.log(x/2);
 
-        for (var i = 0; i < x/2 ; i++) {
+
+        // if (!p1Clicked && !p2Clicked) {
+
+            for (var i = 0; i < x/2 ; i++) {
             cardsList[i].addEventListener('click', function() {
                 // console.log(this);
                 // console.log(this.id);
                 // console.log(cardsList[0].childNodes[0].src);
 
                 // if (player1Clicked === false){
-                console.log(event.target.name);
+                p1Clicked = true;
+                // console.log(event.target.name);
+                name1 = event.target.name;
+                player2Choice = name1;
+
                 let url = this.childNodes[0].src;
                 // console.log(url);
                 displayChosenCard1(url);
+
             });
 
         }
 
-        for (var i = 3; i < x ; i++) {
-            cardsList[i].addEventListener('click', function() {
-                // console.log(this);
-                // console.log(this.id);
-                // console.log(cardsList[0].childNodes[0].src);
-                console.log(event.target.name);
-                let url = this.childNodes[0].src;
-                console.log(url);
-                displayChosenCard2(url);
-            });
+            for (var i = 3; i < x ; i++) {
+                cardsList[i].addEventListener('click', function() {
+                    // console.log(this);
+                    // console.log(this.id);
+                    // console.log(cardsList[0].childNodes[0].src);
+                    p2Clicked = true;
+                    // console.log(event.target.name);
+                    name2 = event.target.name;
+                    player2Choice = name2;
 
-        }
+                    let url = this.childNodes[0].src;
+                    // console.log(url);
+                    displayChosenCard2(url);
+                    console.log("clicked: " + name1 +  ", " + name2);
+                    checkWinClick(name1, name2);
+                });
+
+            }
+            // console.log("clicked: " + name1 +  ", " + name2);
+            // checkWin(name1, name2);
+        // }
+
 };
 
 
@@ -230,6 +255,7 @@ function logKey(event) {
     var x = event.code;
     // console.log(x);
 
+
     // Check for invalid key pressed
     if ((x == 'Digit1') ||  (x == 'Digit2') ||  (x == 'Digit3') ||  (x == 'Digit8') ||  (x == 'Digit9') ||  (x == 'Digit0')) {
 
@@ -241,18 +267,30 @@ function logKey(event) {
         else {
             player2Choice = x;
             console.log("player two choice: ", player2Choice);
-            checkWin();
+            checkWin(player1Choice, player2Choice);
             player1Choice = null;
             player2Choice = null;
         }
     }
  };
 
-var checkWin = function () {
+var checkWinClick = function (p1Choice, p2Choice) {
     console.log("checking now");
 
-    var player1Weapon = (players['player1']['keyboardAndChoice'][player1Choice]);
-    var player2Weapon = (players['player2']['keyboardAndChoice'][player2Choice]);
+    var player1Weapon = (players['player1']['keyboardAndChoice'][p1Choice]);
+    var player2Weapon = (players['player2']['keyboardAndChoice'][p2Choice]);
+
+    // Display game msg base on player's choice
+    // displayChosenCards(player1Weapon, player2Weapon);
+    gameMsg(player1Weapon, player2Weapon);
+};
+
+
+var checkWin = function (p1Choice, p2Choice) {
+    console.log("checking now");
+
+    var player1Weapon = (players['player1']['keyboardAndChoice'][p1Choice]);
+    var player2Weapon = (players['player2']['keyboardAndChoice'][p2Choice]);
 
     // Display game msg base on player's choice
     displayChosenCards(player1Weapon, player2Weapon);
