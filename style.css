@@ -108,11 +108,12 @@
 
 
 .game-in-play {
-	/*width: 100%;*/
-/*	display: flex;
-	justify-content: center;*/
-	/*border: 1px solid #00ff00;*/
+
+	display: flex;
+	justify-content: center;
 	margin: 20px 0 20px 0;
+	/*border: 1px solid #00ff00;*/
+	/*width: 100%;*/
 }
 
 .player-1-bar {
@@ -191,6 +192,7 @@
 
 
 .versus {
+	display: block;
 	font-size: 2em;
 /*	display: flex;
 	align-items: center;*/
@@ -249,4 +251,30 @@
 	display: block;
 	text-align: center;
 	font-size: 1.5em;
+}
+
+.final-winner {
+	font-size: 3em;
+	font-weight: 900;
+	max-width: 100%;
+	text-align: center;
+	background-color: #fff;
+}
+
+.return-to-main-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.5em;
+	font-weight: 500;
+	color: #000;
+	background-color: #FF6F61;
+	width: 220px;
+	height: 60px;
+	border: 2px solid #FFF;
+	border-radius: 5px;
+}
+
+.return-to-main-btn .hidden {
+	display: none;
 }
