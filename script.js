@@ -223,10 +223,9 @@ var showCards = function() {
         player2Card3.setAttribute('id', 'Digit9');
         document.querySelector('#player-2-card-3').appendChild(player2Card3);
 
-        // check for clicks
+
         var cardsList = document.querySelectorAll('.cards');
         let x = cardsList.length;
-
 
         for (var i = 0; i < x/2 ; i++) {
             cardsList[i].addEventListener('click', function() {
@@ -246,55 +245,54 @@ var showCards = function() {
          }
 
         let cardPlayed = 0;
+
         for (var i = 3; i < x ; i++) {
             cardsList[i].addEventListener('click', function() {
 
-                if (p1Clicked) {
-                    if (!p2Clicked) {
-                        p2Clicked = true;
-                        this.remove();
+                    if (p1Clicked) {
+                        if (!p2Clicked) {
+                            p2Clicked = true;
+                            this.remove();
 
-                        cardPlayed++;
-                        console.log('card played:' + cardPlayed);
+                            // Check num of cards played in deck
+                            cardPlayed++;
+                            console.log('card played:' + cardPlayed);
 
-                        name2 = event.target.id;
-                        event2 = event.target;
-                        player2Choice = name2;
+                            name2 = event.target.id;
+                            event2 = event.target;
+                            player2Choice = name2;
 
-                        let url = this.childNodes[0].src;
-                        // console.log(url);
-                        displayChosenCard2(url);
-                        // console.log("clicked: " + name1 +  ", " + name2);
+                            let url = this.childNodes[0].src;
+                            // console.log(url);
+                            displayChosenCard2(url);
 
-                        // checkWinClick(player1Choice, player2Choice);
+                            if (p1Clicked && p2Clicked) {
+                                // player1Choice = name1;
+                                checkWinClick(player1Choice, player2Choice);
 
-                        if (p1Clicked && p2Clicked) {
-                            // player1Choice = name1;
-                            checkWinClick(player1Choice, player2Choice);
+                                var onePtFiveSeconds = setTimeout(function() {
+                                    // console.log("time out");
+                                    // removeCards();
+                                    removeCardsClick();
+                                    removeThumbNails();
+                                    hideStatus();
+                                    p1Clicked = false;
+                                    p2Clicked = false;
+                                    //IF CARDS PLAYED IS 3,
+                                    if (cardPlayed === 3) {
+                                        console.log("RUN END NOVICE LEVEL");
+                                        endNoviceLevel();
+                                    }
 
-                            var onePtFiveSeconds = setTimeout(function() {
-                                // console.log("time out");
-                                // removeCards();
-                                removeCardsClick();
-                                removeThumbNails();
-                                hideStatus();
-                                p1Clicked = false;
-                                p2Clicked = false;
-                            }, 1500);
+                                }, 1500);
+                            }
                         }
+                    } else {
+                        alert("Please Wait for Player 1");
                     }
-                } else {
-                    alert("Please Wait for Player 1");
-                }
-            });
-        }
-            // console.log("clicked: " + name1 +  ", " + name2);
-            // checkWin(name1, name2);
-
-        // }
-
-
-};
+        });
+    }
+}; // END OF SHOWCARDS FUNCTION
 
 
 // Checking which key is pressed
