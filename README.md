@@ -2,8 +2,7 @@
 
 <h4>About the game</h4>
 
-Rock, Paper, Scissors is an online version of this common childhood game. 
-<br />
+Rock, Paper, Scissors is an online version of the common childhood game. 
 <br />
 <a href="https://gitwenlei.github.io/project-1-rock-paper-scissor/" target="_blank">https://gitwenlei.github.io/project-1-rock-paper-scissor/</a>
 <br />
