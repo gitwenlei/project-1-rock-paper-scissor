@@ -50,10 +50,10 @@ There are 3 levels to this game.
 <li>Organising & listing data values using objects</li>
 </ol>
 
-Installation instructions
+<h4>Installation instructions</h4>
 <ul><li>None</li></ul>
 
-Unsolved problems, etc.
+<h4>Unsolved problems, etc.</h4>
 <ul>
   <li>Fixing players turns in Level 2. Player 2 will only be able to choose a card if Player 1 has chosen their card. </li>
   <li>Fixing CSS to not make uneccessary re-sizing of div</li>
