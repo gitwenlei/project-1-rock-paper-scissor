@@ -50,6 +50,6 @@ Rock, Paper, Scissors an online version of this common childhood game.
 </ol>
 
 Installation instructions
-None.
+<ul><li>None</li></ul>
 
 Unsolved problems, etc.
