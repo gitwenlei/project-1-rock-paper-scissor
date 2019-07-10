@@ -3,6 +3,7 @@
 <h4>About the game</h4>
 
 Rock, Paper, Scissors is an online version of this common childhood game. 
+<a href="https://gitwenlei.github.io/project-1-rock-paper-scissor/" target="_blank">https://gitwenlei.github.io/project-1-rock-paper-scissor/</a>
 There are 3 levels to this game.
 <ul>
 <li>Level 1: Novice</li>
