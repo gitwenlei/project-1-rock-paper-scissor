@@ -182,6 +182,7 @@
 	margin: 20px 0;
 	width: 100px;
 	height: 100px;
+	padding: 8px 0 0 0;
 /*	border: 1px solid red;*/
 	background-color: #fff;
 	border-radius: 5px;
@@ -225,7 +226,7 @@
 	width: 200px;
 	height: 200px;
 	margin: 0;
-	padding: 0;
+	padding: 8px 0 0 0;
 /*	border: 1px solid #000;*/
 	border-radius: 10px;
 	background-color: #fff;
@@ -236,7 +237,7 @@
 	width: 200px;
 	height: 200px;
 	margin: 0;
-	padding: 0;
+	padding: 8px 0 0 0;
 /*	border: 1px solid #000;*/
 	border-radius: 10px;
 	background-color: #fff;
