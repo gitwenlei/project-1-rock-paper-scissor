@@ -8,8 +8,8 @@ Rock, Paper, Scissors is an online version of the common childhood game.
 <br />
 <br />
 There are 3 levels to this game.
-<ul>
-<li>Level 1: Novice</li>
+
+<h3>Level 1: Novice</h3>
   <ul>
     <li>2 Players: Player 1 & Player 2 are given a deck of pre-determined cards each consisting of rock, paper & scissors elements. </li>
     <li>Players will start by clicking to select a card from their deck. </li>
@@ -21,9 +21,8 @@ There are 3 levels to this game.
     <li>There are no demerit points for losing the game. </li>
     <li>An overall winner will be announced at after players have exhuasted their cards in deck. </li>
   </ul>
-</ul>
 
-<li>Level 2: Expert</li>
+<h3>Level 2: Expert</h3>
   <ul>
     <li>Similar to Level 1, but this time the players will select their cards using the assigned key pressed. </li>
     <li>There will be no cards shown in the players deck.</li>
@@ -32,15 +31,13 @@ There are 3 levels to this game.
     <li>A winner will be announced at the end of each game. </li>
     <li>The game goes on as long as players keep making selection of their cards based on key pressed. </li>
   </ul>
-</ul>
 
-<li>Level 3: Master</li>
+<h3>Level 3: Master</h3>
   <ul>
     <li>Similar to Level 1</li>
     <li>There will be 1 set of random cards generated for each player. E.g. rock, rock, stone or rock, paper, paper etc...</li>
     <li>1 out of 3 generated cards will be hidden from the players</li>
   </ul>
-</ul>
 
 <h4>Technologies used</h4>
 <ul>
